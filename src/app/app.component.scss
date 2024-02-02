@@ -1,0 +1,17 @@
+@import '../assets/styles/variables';
+@import '../assets/styles/mixins';
+
+main {
+    height: 100%;
+    background-color: $background-color-2;
+    @include dFlex(column, none, none);
+}
+
+.header {
+    min-height: 50px;
+    @include dFlex(row, flex-start, center);
+    padding-left: 20px;
+    background-color: $background-color-1;
+    background-image: url("../assets/images/header\ pattern\ image.png");
+    background-blend-mode: overlay;
+}
