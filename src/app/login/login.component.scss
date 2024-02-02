@@ -1,9 +1,19 @@
 @import '../../assets/styles/variables';
 @import '../../assets/styles/mixins';
 
+:host {
+    display: flex;
+    height: 100%;
+}
+
 .content {
     flex: 1;
     background-color: $background-color-2;
+    @include dFlex(column, center, center);
+}
+
+.card-container {
+    flex: 1;
     @include dFlex(column, center, center);
 }
 
@@ -24,12 +34,23 @@
 
     h2 {
         margin: 0;
+        text-align: center;
     }
 }
 
 .card-body {
     font: normal normal medium 16px/20px Quicksand;
     margin-top: 20px;
+    p, a {
+        display: block;
+        text-align: center;
+    }
+    a {
+        color: $text-color-4;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
 }
 
 #login-form {
@@ -118,7 +139,7 @@
 
 .bottom-navbar {
     padding: 10px;
-    margin-top: auto;
+    min-height: 50px;
     @include dFlex(row, center, center);
     gap: 10px;
 

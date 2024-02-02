@@ -1,0 +1,48 @@
+@import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/mixins';
+
+.content {
+    @include dFlex(row, space-between, center);
+    min-height: 50px;
+    padding: 0 20px;
+    background-color: $background-color-6;
+}
+
+img {
+    height: 25px;
+    opacity: 1;
+    cursor: pointer;
+    filter: invert(68%) sepia(71%) saturate(404%) hue-rotate(95deg) brightness(92%) contrast(85%);
+}
+
+h2 {
+    margin: 0;
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: normal;
+    text-align: center;
+    text-transform: capitalize;
+    color: $text-color-7;
+}
+
+.btn-group {
+    @include dFlex(row, flex-end, center);
+    gap: 20px;
+    button {
+        font-size: medium;
+        font-weight: 600;
+        font-family: inherit;
+        text-transform: uppercase;
+        color: $text-color-5;
+        background-color: $background-color-4;
+        border: none;
+        border-radius: 2px;
+        box-shadow: 0px 3px 5px #0000003D;
+        padding: 5px 10px;
+        cursor: pointer;
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+}
