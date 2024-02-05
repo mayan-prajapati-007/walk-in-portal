@@ -1,0 +1,195 @@
+@import '../../../../../assets/styles/variables';
+@import '../../../../../assets/styles/mixins';
+
+:host {
+    flex: 1;
+    width: 100%;
+}
+
+.content {
+    @include dFlex(column, none, none);
+}
+
+.content-header {
+    @include dFlex(row, space-between, center);
+    color: $text-color-1;
+    background-color: $background-color-8;
+    padding: 0 20px;
+}
+
+.content-title {
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 600;
+}
+
+.content-status {
+    @include dFlex(column, space-between, none);
+    background-color: $background-color-3;
+    padding: 20px;
+    gap: 20px;
+}
+
+.content-body {
+    @include dFlex(column, space-between, none);
+    background-color: $background-color-3;
+    margin-top: 10px;
+    padding: 20px;
+    gap: 40px;
+}
+
+.input-group-radios {
+    @include dFlex(row, flex-start, center);
+    gap: 30px;
+}
+
+.input-group-radio {
+    @include dFlex(row, flex-start, center);
+    gap: 5px;
+
+    input {
+        height: 18px;
+        width: 18px;
+        margin: 0;
+        accent-color: $accent-color-1;
+    }
+
+    label {
+        font-weight: 600;
+        color: $text-color-2;
+    }
+}
+
+.main-label {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 600;
+    color: $text-color-3;
+}
+
+.content-element-25 {
+    width: 25%;
+}
+
+.content-element-50 {
+    width: 50%;
+}
+
+.input-group-text {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: 15px;
+
+    input {
+        padding-left: 0;
+        font-size: 16px;
+        line-height: 20px;
+        font: inherit;
+        font-weight: 600;
+        color: $text-color-1;
+        border: none;
+        border-bottom: 1px solid $border-color-2;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.technology-group, .notice-container, .notice-radio-container, .applied-earlier-container {
+    @include dFlex(column, none, none);
+    gap: 15px;
+}
+
+.notice-duration-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.input-group-checkboxes {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.input-group-checkbox {
+    @include dFlex(row, flex-start, center);
+    gap: 15px;
+
+    input {
+        height: 18px;   
+        width: 18px;
+        margin: 0;
+        accent-color: $accent-color-1;
+    }
+
+    label {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 600;
+        color: $text-color-1;
+    }
+
+}
+
+.input-group-dropdown {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    label {
+        font-size: 12px;
+        line-height: 16px;
+        color: $text-color-3;
+    }
+    select {
+        font-family: inherit;
+        margin: 0;
+        padding: 0;
+        padding-bottom: 5px;
+        border: none;
+        font-weight: 600;
+        border-bottom: 1px solid $border-color-2;
+        color: $text-color-1;
+        appearance: none;
+        background: transparent;
+        background-image: url("../../../../../assets/icons/arrow-down.svg");
+        background-repeat: no-repeat;
+        background-position-x: 100%;
+        background-position-y: 0px;
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.input-group-date {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: 15px;
+    input {
+        padding-left: 0;
+        font-size: 16px;
+        line-height: 20px;
+        font: inherit;
+        font-weight: 600;
+        color: $text-color-1;
+        border: none;
+        border-bottom: 1px solid $border-color-2;
+
+        &:focus {
+            outline: none;
+        }
+        &::-webkit-calendar-picker-indicator {
+            background-image: url("../../../../../assets/icons/calendar.svg");
+            background-repeat: no-repeat;
+            background-position-x: 100%;
+            background-position-y: 0px;
+            width: 15px;
+            height: 15px;
+            appearance: none;
+            border: none;
+        }
+    }
+}

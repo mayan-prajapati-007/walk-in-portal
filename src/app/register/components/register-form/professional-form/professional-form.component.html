@@ -1,0 +1,148 @@
+<div class="content">
+    <div class="content-header">
+        <h2 class="content-title">Professional Qualifications</h2>
+    </div>
+    <div class="content-status">
+        <label for="applicant_type" class="main-label">Applicant type*</label>
+        <div class="input-group-radios">
+            <div class="input-group-radio">
+                <input type="radio" id="fresher" name="applicant_type" value="fresher">
+                <label for="fresher">Fresher</label>
+            </div>
+            <div class="input-group-radio">
+                <input type="radio" id="experienced" name="applicant_type" value="experienced">
+                <label for="experienced">Experienced</label>
+            </div>
+        </div>
+    </div>
+    <div class="content-body">
+        <div class="input-group-text content-element-25 experienced-field">
+            <label class="main-label" for="yearsOfExperience">Years of Experience*</label>
+            <input id="yearsOfExperience" type="text" />
+        </div>
+
+        <div class="input-group-text content-element-25 experienced-field">
+            <label class="main-label" for="currentCTC*">Current CTC* (In Rupees)</label>
+            <input id="currentCTC" type="text" />
+        </div>
+
+        <div class="input-group-text content-element-25 experienced-field">
+            <label class="main-label" for="expectedCTC*">Expected CTC* (In Rupees)</label>
+            <input id="expectedCTC" type="text" />
+        </div>
+
+        <div class="technology-group content-element-50 experienced-field">
+            <div class="input-group-checkboxes">
+                <label class="main-label" for="expertTech">Select All The Technologies You Expertise In*</label>
+                <div class="input-group-checkbox">
+                    <input type="checkbox" id="javascript" name="expertTech" value="1">
+                    <label for="javascript">Javascript</label>
+                </div>
+                <div class="input-group-checkbox">
+                    <input type="checkbox" id="angularJS" name="expertTech" value="2">
+                    <label for="angularJS">Angular JS</label>
+                </div>
+                <div class="input-group-checkbox">
+                    <input type="checkbox" id="react" name="expertTech" value="3">
+                    <label for="react">React</label>
+                </div>
+                <div class="input-group-checkbox">
+                    <input type="checkbox" id="nodeJS" name="expertTech" value="4">
+                    <label for="nodeJS">Node JS</label>
+                </div>
+                <div class="input-group-checkbox">
+                    <input type="checkbox" id="otherExpert" name="expertTech" value="0">
+                    <label for="otherExpert">Others</label>
+                </div>
+            </div>
+            <div class="input-group-text">
+                <label class="main-label" for="otherExpertTech">If others, please mention</label>
+                <input id="otherExpertTech" type="text" />
+            </div>
+        </div>
+
+        <div class="technology-group content-element-50">
+            <div class="input-group-checkboxes">
+                <label class="main-label" for="knownTech">Select All The Technologies You Are Familiar In</label>
+                <div class="input-group-checkbox">
+                    <input type="checkbox" id="javascript" name="knownTech" value="1">
+                    <label for="javascript">Javascript</label>
+                </div>
+                <div class="input-group-checkbox">
+                    <input type="checkbox" id="angularJS" name="knownTech" value="2">
+                    <label for="angularJS">Angular JS</label>
+                </div>
+                <div class="input-group-checkbox">
+                    <input type="checkbox" id="react" name="knownTech" value="3">
+                    <label for="react">React</label>
+                </div>
+                <div class="input-group-checkbox">
+                    <input type="checkbox" id="nodeJS" name="knownTech" value="4">
+                    <label for="nodeJS">Node JS</label>
+                </div>
+                <div class="input-group-checkbox">
+                    <input type="checkbox" id="otherKnown" name="knownTech" value="0">
+                    <label for="otherKnown">Others</label>
+                </div>
+            </div>
+            <div class="input-group-text">
+                <label class="main-label" for="otherKnownTech">If others, please mention</label>
+                <input id="otherKnownTech" type="text" />
+            </div>
+        </div>
+
+        <div class="notice-container experienced-field">
+            <div class="notice-radio-container">
+                <label for="notice_period" class="main-label">Are you currently on notice period?*</label>
+                <div class="input-group-radios">
+                    <div class="input-group-radio">
+                        <input type="radio" id="noticeY" name="notice_period" value="noticeY">
+                        <label for="noticeY">Yes</label>
+                    </div>
+                    <div class="input-group-radio">
+                        <input type="radio" id="noticeN" name="notice_period" value="noticeN">
+                        <label for="noticeN">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="notice-duration-container">
+                <div class="input-group-date">
+                    <label class="main-label" for="noticePeriodEndDate">If Yes, when will your notice period
+                        end?*</label>
+                    <input id="noticePeriodEndDate" type="date" />
+                </div>
+                <div class="input-group-dropdown">
+                    <label class="main-label" for="noticePeriodDuration">How long is your notice period?* (Mention in
+                        months)</label>
+                    <select id="noticePeriodDuration" name="noticePeriodDuration">
+                        <option value="1">1 month</option>
+                        <option value="2">2 months</option>
+                        <option value="3">3 months</option>
+                        <option value="4">4 months</option>
+                        <option value="5">5 months</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="applied-earlier-container content-element-50">
+            <label for="applied_earlier" class="main-label">Have You Appeared For Any Test By Zeus in the past 12
+                months?*</label>
+            <div class="input-group-radios">
+                <div class="input-group-radio">
+                    <input type="radio" id="appliedY" name="applied_earlier" value="appliedY">
+                    <label for="appliedY">Yes</label>
+                </div>
+                <div class="input-group-radio">
+                    <input type="radio" id="appliedN" name="applied_earlier" value="appliedN">
+                    <label for="appliedN">No</label>
+                </div>
+            </div>
+
+            <div class="input-group-text">
+                <label class="main-label" for="appliedEarlierRole*">If Yes, which role did you apply for?</label>
+                <input id="appliedEarlierRole" type="text" />
+            </div>
+        </div>
+    </div>
+</div>
