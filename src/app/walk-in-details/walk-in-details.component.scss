@@ -1,0 +1,259 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+
+:host {
+    display: flex;
+    height: 100%;
+}
+
+.content {
+    flex: 1;
+    background-color: $background-color-2;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+}
+
+h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+.meta-data-container, .walk-in-form {
+    background-color: $background-color-3;
+}
+
+.meta-data {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: relative;
+}
+
+.walk-in-form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 16px;
+}
+
+
+.horizontal-line {
+    margin: 0;
+    margin-bottom: 16px;
+}
+
+.meta-data > button {
+    padding: 5px 16px;
+    align-self: center;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: $text-color-10;
+    background-color: $background-color-4;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0px 3px 5px #0000003D;
+}
+
+.meta-data > h2 {
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 600;
+    color: $text-color-4;
+    margin-bottom: 16px;
+}
+
+.meta-data > p {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 600;
+    color: $text-color-3;
+    margin-bottom: 8px;
+}
+
+.date-location-container {
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 600;
+    color: $text-color-1;
+    @include dFlex(row, none, center);
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.location-container {
+    font-size: 12px;
+    color: $text-color-3;
+    @include dFlex(row, none, flex-end);
+    gap: 2px;
+    img {
+        width: 16px;
+        height: 16px;
+        filter: invert(41%) sepia(1%) saturate(2610%) hue-rotate(326deg) brightness(94%) contrast(86%);
+    }
+}
+
+.job-role-container {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    @include dFlex(row, none, center);
+    gap: 16px;
+}
+
+.job-role {
+    @include dFlex(row, none, center);
+    gap: 8px;
+    span {
+        width: 24px;
+        height: 24px;
+        border: 1px solid $border-color-3;
+        border-radius: 50%;
+        position: relative;
+        img {
+            width: 16px;
+            height: 16px;
+            object-fit: contain;
+            position: absolute;
+            top: 4px;
+            left: 4px;
+        }
+    }
+    p {
+        color: $text-color-4;
+    }
+}
+
+.accordian-header {
+    @include dFlex(row, space-between, center);
+    color: $text-color-1;
+    background-color: $background-color-8;
+    padding: 0px 0px 0px 20px;
+    h2 {
+        font-size: 16px;
+        line-height: 40px;
+        font-weight: 600;
+    }
+    span {
+        height: 40px;
+        width: 30px;
+        border-left: 1px solid $border-color-3;
+        @include dFlex(row, center, center);
+    }
+    img {
+        rotate: 180deg;
+    }
+}
+
+.accordian-body {
+    display: flex;
+    flex-direction: column;
+    background-color: $background-color-3;
+}
+
+.accordian-body > .horizontal-line {
+    width: auto;
+    margin: 0 20px;
+}
+
+.form-title {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+    color: $text-color-1;
+}
+
+.time-slot-container {
+    @include dFlex(column, none, none);
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.main-label {
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 500;
+    color: $text-color-3;
+}
+
+.input-group-radios {
+    @include dFlex(column, none, none);
+    gap: 8px;
+}
+
+.input-group-radio {
+    @include dFlex(row, flex-start, center);
+    gap: 5px;
+
+    input {
+        height: 18px;
+        width: 18px;
+        margin: 0;
+        accent-color: $accent-color-1;
+    }
+
+    label {
+        font-weight: 600;
+        color: $text-color-2;
+    }
+}
+
+.preference-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.input-group-checkbox {
+    @include dFlex(row, flex-start, center);
+    gap: 5px;
+
+    input {
+        height: 18px;   
+        width: 18px;
+        margin: 0;
+        accent-color: $accent-color-1;
+    }
+
+    label {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 600;
+        color: $text-color-1;
+    }
+}
+
+.walk-in-form > .horizontal-line {
+    margin: 0;
+}
+
+.resume-upload-container {
+    @include dFlex(row, none, center);
+    gap: 16px;
+}
+
+.custom-file-upload {
+    margin: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: $text-color-4;
+    cursor: pointer;
+    @include dFlex(row, center, center);
+    gap: 10px;
+
+    img {
+        border: none;
+        object-fit: cover;
+        filter: invert(35%) sepia(61%) saturate(450%) hue-rotate(103deg) brightness(96%) contrast(96%);
+    }
+}

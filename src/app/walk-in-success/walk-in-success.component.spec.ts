@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeComponent } from './home.component';
+import { WalkInSuccessComponent } from './walk-in-success.component';
 
-describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+describe('WalkInSuccessComponent', () => {
+  let component: WalkInSuccessComponent;
+  let fixture: ComponentFixture<WalkInSuccessComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomeComponent]
+      imports: [WalkInSuccessComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture = TestBed.createComponent(WalkInSuccessComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

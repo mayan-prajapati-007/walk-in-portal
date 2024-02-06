@@ -28,24 +28,21 @@
     border-top: 2px solid $border-color-1;
 }
 
-.card-header {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    align-items: center;
-
-    h2 {
-        margin: 0;
-        text-align: center;
-    }
+.card-header>h2 {
+    margin: 0;
+    text-align: center;
 }
 
 .card-body {
     font: normal normal medium 16px/20px Quicksand;
     margin-top: 20px;
-    p, a {
+
+    p,
+    a {
         display: block;
         text-align: center;
     }
+
     a {
         color: $text-color-4;
         text-decoration: none;
@@ -72,6 +69,7 @@
         color: $text-color-3;
         border: none;
         border-bottom: 1px solid $border-color-2;
+
         &:focus {
             outline: none;
         }

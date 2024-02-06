@@ -1,0 +1,56 @@
+@import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/mixins';
+
+h2, h4, p {
+    margin: 0;
+    padding: 0;
+}
+
+.accordian-header {
+    @include dFlex(row, space-between, center);
+    color: $text-color-1;
+    background-color: $background-color-8;
+    padding: 0px 0px 0px 20px;
+    h2 {
+        font-size: 16px;
+        line-height: 40px;
+        font-weight: 600;
+    }
+    span {
+        height: 40px;
+        width: 30px;
+        border-left: 1px solid $border-color-3;
+        @include dFlex(row, center, center);
+    }
+    img {
+        rotate: 180deg;
+    }
+}
+
+.accordian-body {
+    display: flex;
+    flex-direction: column;
+    background-color: $background-color-3;
+}
+
+.accordian-body > .horizontal-line {
+    width: auto;
+    margin: 0 20px;
+}
+
+.gross-compensation-package {
+    padding: 20px;
+    h4 {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 16px;
+        text-transform: capitalize;
+        color: $text-color-3;
+        margin-bottom: 16px;
+    }
+    p {
+        font-size: 14px;
+        line-height: 24px;
+        font-weight: 600;
+    }
+}

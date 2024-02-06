@@ -1,0 +1,101 @@
+<div class="content">
+    <div class="meta-data-container">
+        <div class="meta-data">
+            <button [routerLink]="['/walk-in-details/success', this.walk_in_id]">Apply</button>
+            <h2>Walk In for Designer Job Role</h2>
+            <p>Date & Time :</p>
+            <div class="date-location-container">
+                <p>10-Jul-2021 to 11-Jul-2021</p>
+                <div class="divider"></div>
+                <div class="location-container">
+                    <img src="./assets/icons/location_on_black_24dp.svg" alt="">
+                    <p>Mumbai</p>
+                </div>
+            </div>
+            <div class="horizontal-line"></div>
+            <p>Job Roles :</p>
+            <div class="job-role-container">
+                <div class="job-role">
+                    <span>
+                        <img src="./assets/icons/Instructional Designer.svg" alt="">
+                    </span>
+                    <p>Instructional Designer</p>
+                </div>
+                <div class="divider"></div>
+                <div class="job-role">
+                    <span>
+                        <img src="./assets/icons/Software Quality Engineer.svg" alt="">
+                    </span>
+                    <p>Software Engineer</p>
+                </div>
+                <div class="divider"></div>
+                <div class="job-role">
+                    <span>
+                        <img src="./assets/icons/Software Quality Engineer.svg" alt="">
+                    </span>
+                    <p>Software Quality Engineer</p>
+                </div>
+            </div>
+        </div>
+        <div class="pre-req-accordian">
+            <div class="accordian-header">
+                <h2>Pre-requisites & Application Process</h2>
+                <span>
+                    <img src="./assets/icons/expand_less_black_24dp.svg" alt="">
+                </span>
+            </div>
+            <div class="accordian-body">
+                <accordian-body-element></accordian-body-element>
+                <div class="horizontal-line"></div>
+                <accordian-body-element></accordian-body-element>
+                <div class="horizontal-line"></div>
+                <accordian-body-element></accordian-body-element>
+                <div class="horizontal-line"></div>
+                <accordian-body-element></accordian-body-element>
+            </div>
+        </div>
+    </div>
+    <div class="walk-in-form">
+        <h3 class="form-title">Time Slots & Preferences</h3>
+        <div class="time-slot-container">
+            <label for="time_slot" class="main-label">Select a Time Slot :</label>
+            <div class="input-group-radios">
+                <div class="input-group-radio">
+                    <input type="radio" id="1" name="time_slot" value="1">
+                    <label for="1">9:00 AM to 11:00 AM</label>
+                </div>
+                <div class="input-group-radio">
+                    <input type="radio" id="2" name="time_slot" value="2">
+                    <label for="2">1:00 PM to 3:00 PM</label>
+                </div>
+            </div>
+        </div>
+        <div class="horizontal-line"></div>
+        <div class="preference-container">
+            <label class="main-label" for="preference">Preferred Job Roles*</label>
+            <div class="input-group-checkbox">
+                <input type="checkbox" id="instructionalDesigner" name="preference" value="Instructional Designer">
+                <label for="instructionalDesigner">Instructional Designer</label>
+            </div>
+            <div class="input-group-checkbox">
+                <input type="checkbox" id="softwareEngineer" name="preference" value="Software Engineer">
+                <label for="softwareEngineer">Software Engineer</label>
+            </div>
+            <div class="input-group-checkbox">
+                <input type="checkbox" id="softwareQualityEngineer" name="preference" value="Software Quality Engineer">
+                <label for="softwareQualityEngineer">Software Quality Engineer</label>
+            </div>
+        </div>
+        <div class="horizontal-line"></div>
+        <div class="resume-upload-container">
+            <label class="custom-file-upload">
+                <input type="file" hidden accept="images/*" />
+                <img src="./assets/icons/Upload_black_24dp.svg" alt="">
+                Upload Updated Resume
+            </label>
+        </div>
+    </div>
+    <job-role-accordian></job-role-accordian>
+    <job-role-accordian></job-role-accordian>
+    <job-role-accordian></job-role-accordian>
+</div>

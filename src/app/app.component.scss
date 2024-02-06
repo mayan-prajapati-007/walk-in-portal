@@ -11,8 +11,11 @@ main {
 .header {
     min-height: 50px;
     @include dFlex(row, flex-start, center);
-    padding-left: 20px;
+    padding: 5px 20px;
     background-color: $background-color-1;
     background-image: url("../assets/images/header\ pattern\ image.png");
     background-blend-mode: overlay;
+    img {
+        cursor: pointer;
+    }
 }
