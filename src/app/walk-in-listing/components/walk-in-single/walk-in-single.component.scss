@@ -13,7 +13,7 @@ h2, p {
 
 .content {
     flex: 1;
-    background-color: $background-color-3;
+    background-color: $color-2;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -34,15 +34,15 @@ h2, p {
     top: -9px;
     right: 24px;
     border-radius: 2px;
-    color: $text-color-9;
-    background-color: $background-color-9;
+    color: $color-17;
+    background-color: $color-11;
 }
 
 .content > h2 {
     font-size: 18px;
     line-height: 20px;
     font-weight: 600;
-    color: $text-color-4;
+    color: $color-5;
     margin-bottom: 16px;
 }
 
@@ -50,7 +50,7 @@ h2, p {
     font-size: 12px;
     line-height: 16px;
     font-weight: 600;
-    color: $text-color-3;
+    color: $color-15;
     margin-bottom: 8px;
 }
 
@@ -63,8 +63,8 @@ h2, p {
     letter-spacing: 0;
     text-transform: uppercase;
     cursor: pointer;
-    color: $text-color-10;
-    background-color: $background-color-4;
+    color: $color-13;
+    background-color: $color-7;
     border: none;
     border-radius: 2px;
     box-shadow: 0px 3px 5px #0000003D;
@@ -74,7 +74,7 @@ h2, p {
     font-size: 14px;
     line-height: 16px;
     font-weight: 600;
-    color: $text-color-1;
+    color: $color-4;
     @include dFlex(row, none, center);
     gap: 16px;
     margin-bottom: 16px;
@@ -82,7 +82,7 @@ h2, p {
 
 .location-container {
     font-size: 12px;
-    color: $text-color-3;
+    color: $color-15;
     @include dFlex(row, none, flex-end);
     gap: 2px;
     img {
@@ -98,7 +98,7 @@ h2, p {
     font-weight: 600;
     @include dFlex(row, none, center);
     gap: 16px;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 }
 
 .job-role {
@@ -107,7 +107,7 @@ h2, p {
     span {
         width: 24px;
         height: 24px;
-        border: 1px solid $border-color-3;
+        border: 1px solid $color-20;
         border-radius: 50%;
         position: relative;
         img {
@@ -118,5 +118,26 @@ h2, p {
             top: 4px;
             left: 4px;
         }
+    }
+}
+
+.content > p.additional-info {
+    width: max-content;
+    padding: 3px 8px 2px;
+    border-radius: 10px;
+    font-size: 12px;
+    line-height: 14px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: $color-4;
+    background-color: $color-21;
+}
+
+@media (max-width: 430px){
+    .job-role-container {
+        @include dFlex(column, none, start);
+    }
+    .divider.lg {
+        display: none;
     }
 }

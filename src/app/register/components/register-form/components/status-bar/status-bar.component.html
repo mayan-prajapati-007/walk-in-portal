@@ -1,6 +1,6 @@
 <div class="content">
     <div class="status">
-        <div class="status__icon active">
+        <div class="status__icon active" [ngClass]="{'active': getFormStatus() === 0, 'completed': getFormStatus() > 0}">
             <span>1</span>
             <img src="./assets/icons/edit.svg" alt="">
         </div>
@@ -10,7 +10,7 @@
     </div>
     <div class="horizontal-line"></div>
     <div class="status">
-        <div class="status__icon">
+        <div class="status__icon" [ngClass]="{'active': getFormStatus() === 1, 'completed': getFormStatus() > 1}">
             <span>2</span>
             <img src="./assets/icons/edit.svg" alt="">
         </div>
@@ -20,7 +20,7 @@
     </div>
     <div class="horizontal-line"></div>
     <div class="status">
-        <div class="status__icon">
+        <div class="status__icon" [ngClass]="{'active': getFormStatus() === 2}">
             <span>3</span>
         </div>
         <div class="status__text">

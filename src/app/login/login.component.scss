@@ -2,14 +2,14 @@
 @import '../../assets/styles/mixins';
 
 :host {
-    display: flex;
+    flex: 1 1 calc(100vh - 60px);
     height: 100%;
 }
 
 .content {
     flex: 1;
     height: 100%;
-    background-color: $background-color-2;
+    background-color: $color-6;
     @include dFlex(column, space-between, center);
 }
 
@@ -23,9 +23,15 @@
     margin: 0 auto;
     margin-top: 50px;
     padding: 20px;
-    color: $text-color-1;
-    background-color: $background-color-3;
-    border-top: 2px solid $border-color-1;
+    color: $color-4;
+    background-color: $color-2;
+    border-top: 5px solid $color-18;
+}
+
+@media (max-width: 430px) {
+    .card {
+        width: 90%;
+    }
 }
 
 .card-header>h2 {
@@ -44,7 +50,7 @@
     }
 
     a {
-        color: $text-color-4;
+        color: $color-5;
         text-decoration: none;
         text-transform: uppercase;
         font-weight: 600;
@@ -66,9 +72,9 @@
     input {
         font: inherit;
         font-weight: 600;
-        color: $text-color-3;
+        color: $color-15;
         border: none;
-        border-bottom: 1px solid $border-color-2;
+        border-bottom: 1px solid $color-19;
 
         &:focus {
             outline: none;
@@ -82,7 +88,7 @@
         line-height: 18px;
         text-transform: uppercase;
         letter-spacing: 0px;
-        color: $text-color-4;
+        color: $color-5;
         justify-self: end;
     }
 }
@@ -90,7 +96,7 @@
 .password {
     display: grid;
     grid-template-columns: 9fr 1fr;
-    border-bottom: 1px solid $border-color-2;
+    border-bottom: 1px solid $color-19;
 
     input {
         border: none;
@@ -110,12 +116,12 @@
         height: 20px;
         width: 20px;
         margin: 0;
-        accent-color: $accent-color-1;
+        accent-color: $color-5;
     }
 
     label {
         font-weight: 600;
-        color: $text-color-2;
+        color: $color-14;
     }
 }
 
@@ -128,8 +134,8 @@
         font-size: medium;
         font-weight: 600;
         font-family: inherit;
-        color: $text-color-5;
-        background-color: $background-color-4;
+        color: $color-1;
+        background-color: $color-7;
         border: none;
         border-radius: 5px;
         padding: 10px 0px;
@@ -149,7 +155,7 @@
         font-size: medium;
         font-weight: 600;
         font-family: inherit;
-        color: $text-color-4;
+        color: $color-5;
         border: none;
     }
 }

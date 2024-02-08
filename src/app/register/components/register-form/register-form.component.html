@@ -1,11 +1,11 @@
 <div class="content">
     <status-bar></status-bar>
-    <!-- <personal-form></personal-form> -->
-    <!-- <educational-form></educational-form> -->
-    <!-- <professional-form></professional-form> -->
-    <review-form></review-form>
+    <personal-form *ngIf="getFormStatus()==0"></personal-form>
+    <educational-form *ngIf="getFormStatus()===1"></educational-form>
+    <professional-form *ngIf="getFormStatus()===1"></professional-form>
+    <review-form *ngIf="getFormStatus()===2"></review-form>
     <div class="bottom-navbar">
-        <button>Previous</button>
-        <button>Next</button>
+        <button *ngIf="getFormStatus()>0" type="button" (click)="previousForm()">Previous</button>
+        <button *ngIf="getFormStatus()<2" type="button" (click)="nextForm()">Next</button>
     </div>
 </div>

@@ -1,5 +1,5 @@
-@import '../../../../../assets/styles/variables';
-@import '../../../../../assets/styles/mixins';
+@import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/mixins';
 
 :host {
     flex: 1;
@@ -12,8 +12,8 @@
 
 .content-header {
     @include dFlex(row, space-between, center);
-    color: $text-color-1;
-    background-color: $background-color-8;
+    color: $color-4;
+    background-color: $color-10;
     padding: 0 20px;
 }
 
@@ -25,14 +25,14 @@
 
 .content-status {
     @include dFlex(column, space-between, none);
-    background-color: $background-color-3;
+    background-color: $color-2;
     padding: 20px;
     gap: 20px;
 }
 
 .content-body {
     @include dFlex(column, space-between, none);
-    background-color: $background-color-3;
+    background-color: $color-2;
     margin-top: 10px;
     padding: 20px;
     gap: 40px;
@@ -51,12 +51,12 @@
         height: 18px;
         width: 18px;
         margin: 0;
-        accent-color: $accent-color-1;
+        accent-color: $color-5;
     }
 
     label {
         font-weight: 600;
-        color: $text-color-2;
+        color: $color-14;
     }
 }
 
@@ -64,7 +64,7 @@
     font-size: 12px;
     line-height: 16px;
     font-weight: 600;
-    color: $text-color-3;
+    color: $color-15;
 }
 
 .content-element-25 {
@@ -87,9 +87,9 @@
         line-height: 20px;
         font: inherit;
         font-weight: 600;
-        color: $text-color-1;
+        color: $color-4;
         border: none;
-        border-bottom: 1px solid $border-color-2;
+        border-bottom: 1px solid $color-19;
 
         &:focus {
             outline: none;
@@ -122,14 +122,14 @@
         height: 18px;   
         width: 18px;
         margin: 0;
-        accent-color: $accent-color-1;
+        accent-color: $color-5;
     }
 
     label {
         font-size: 14px;
         line-height: 20px;
         font-weight: 600;
-        color: $text-color-1;
+        color: $color-4;
     }
 
 }
@@ -140,7 +140,7 @@
     label {
         font-size: 12px;
         line-height: 16px;
-        color: $text-color-3;
+        color: $color-15;
     }
     select {
         font-family: inherit;
@@ -149,11 +149,11 @@
         padding-bottom: 5px;
         border: none;
         font-weight: 600;
-        border-bottom: 1px solid $border-color-2;
-        color: $text-color-1;
+        border-bottom: 1px solid $color-19;
+        color: $color-4;
         appearance: none;
         background: transparent;
-        background-image: url("../../../../../assets/icons/arrow-down.svg");
+        background-image: url("../../../../../../assets/icons/arrow-down.svg");
         background-repeat: no-repeat;
         background-position-x: 100%;
         background-position-y: 0px;
@@ -174,15 +174,15 @@
         line-height: 20px;
         font: inherit;
         font-weight: 600;
-        color: $text-color-1;
+        color: $color-4;
         border: none;
-        border-bottom: 1px solid $border-color-2;
+        border-bottom: 1px solid $color-19;
 
         &:focus {
             outline: none;
         }
         &::-webkit-calendar-picker-indicator {
-            background-image: url("../../../../../assets/icons/calendar.svg");
+            background-image: url("../../../../../../assets/icons/calendar.svg");
             background-repeat: no-repeat;
             background-position-x: 100%;
             background-position-y: 0px;
@@ -191,5 +191,14 @@
             appearance: none;
             border: none;
         }
+    }
+}
+
+@media (max-width: 430px) {
+    .content-element-25, .content-element-50 {
+        width: 100%;
+    }
+    .notice-duration-container {
+        grid-template-columns: 1fr;
     }
 }

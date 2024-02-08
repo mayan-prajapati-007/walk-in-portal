@@ -9,7 +9,7 @@
 
 .content {
     flex: 1;
-    background-color: $background-color-2;
+    background-color: $color-6;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -22,7 +22,7 @@ h2, h3, p {
 }
 
 .meta-data-container, .walk-in-form {
-    background-color: $background-color-3;
+    background-color: $color-2;
 }
 
 .meta-data {
@@ -57,8 +57,8 @@ h2, h3, p {
     position: absolute;
     top: 20px;
     right: 20px;
-    color: $text-color-10;
-    background-color: $background-color-4;
+    color: $color-13;
+    background-color: $color-7;
     border: none;
     border-radius: 2px;
     box-shadow: 0px 3px 5px #0000003D;
@@ -68,7 +68,7 @@ h2, h3, p {
     font-size: 18px;
     line-height: 20px;
     font-weight: 600;
-    color: $text-color-4;
+    color: $color-5;
     margin-bottom: 16px;
 }
 
@@ -76,7 +76,7 @@ h2, h3, p {
     font-size: 12px;
     line-height: 16px;
     font-weight: 600;
-    color: $text-color-3;
+    color: $color-15;
     margin-bottom: 8px;
 }
 
@@ -84,7 +84,7 @@ h2, h3, p {
     font-size: 14px;
     line-height: 16px;
     font-weight: 600;
-    color: $text-color-1;
+    color: $color-4;
     @include dFlex(row, none, center);
     gap: 16px;
     margin-bottom: 16px;
@@ -92,7 +92,7 @@ h2, h3, p {
 
 .location-container {
     font-size: 12px;
-    color: $text-color-3;
+    color: $color-15;
     @include dFlex(row, none, flex-end);
     gap: 2px;
     img {
@@ -116,7 +116,7 @@ h2, h3, p {
     span {
         width: 24px;
         height: 24px;
-        border: 1px solid $border-color-3;
+        border: 1px solid $color-20;
         border-radius: 50%;
         position: relative;
         img {
@@ -129,14 +129,14 @@ h2, h3, p {
         }
     }
     p {
-        color: $text-color-4;
+        color: $color-5;
     }
 }
 
 .accordian-header {
     @include dFlex(row, space-between, center);
-    color: $text-color-1;
-    background-color: $background-color-8;
+    color: $color-4;
+    background-color: $color-10;
     padding: 0px 0px 0px 20px;
     h2 {
         font-size: 16px;
@@ -145,19 +145,20 @@ h2, h3, p {
     }
     span {
         height: 40px;
-        width: 30px;
-        border-left: 1px solid $border-color-3;
+        width: 40px;
+        border-left: 1px solid $color-20;
         @include dFlex(row, center, center);
     }
     img {
         rotate: 180deg;
+        filter: invert(38%) sepia(62%) saturate(431%) hue-rotate(103deg) brightness(91%) contrast(97%);
     }
 }
 
 .accordian-body {
     display: flex;
     flex-direction: column;
-    background-color: $background-color-3;
+    background-color: $color-2;
 }
 
 .accordian-body > .horizontal-line {
@@ -169,7 +170,7 @@ h2, h3, p {
     font-size: 16px;
     line-height: 20px;
     font-weight: 600;
-    color: $text-color-1;
+    color: $color-4;
 }
 
 .time-slot-container {
@@ -182,7 +183,7 @@ h2, h3, p {
     font-size: 12px;
     line-height: 20px;
     font-weight: 500;
-    color: $text-color-3;
+    color: $color-15;
 }
 
 .input-group-radios {
@@ -198,12 +199,12 @@ h2, h3, p {
         height: 18px;
         width: 18px;
         margin: 0;
-        accent-color: $accent-color-1;
+        accent-color: $color-5;
     }
 
     label {
         font-weight: 600;
-        color: $text-color-2;
+        color: $color-14;
     }
 }
 
@@ -222,14 +223,14 @@ h2, h3, p {
         height: 18px;   
         width: 18px;
         margin: 0;
-        accent-color: $accent-color-1;
+        accent-color: $color-5;
     }
 
     label {
         font-size: 14px;
         line-height: 20px;
         font-weight: 600;
-        color: $text-color-1;
+        color: $color-4;
     }
 }
 
@@ -246,7 +247,7 @@ h2, h3, p {
     margin: 0;
     font-weight: 600;
     text-transform: uppercase;
-    color: $text-color-4;
+    color: $color-5;
     cursor: pointer;
     @include dFlex(row, center, center);
     gap: 10px;
@@ -255,5 +256,24 @@ h2, h3, p {
         border: none;
         object-fit: cover;
         filter: invert(35%) sepia(61%) saturate(450%) hue-rotate(103deg) brightness(96%) contrast(96%);
+    }
+}
+
+@media (max-width: 430px){
+    .job-role-container {
+        @include dFlex(column, none, start);
+    }
+    .divider.lg {
+        display: none;
+    }
+    
+    .meta-data > button {
+        width: 100%;
+        height: 40px;
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        right: 0;
+        border-radius: 0px;
     }
 }

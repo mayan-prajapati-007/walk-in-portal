@@ -1,5 +1,5 @@
-@import '../../../../../assets/styles/variables';
-@import '../../../../../assets/styles/mixins';
+@import '../../../../../../assets/styles/variables';
+@import '../../../../../../assets/styles/mixins';
 
 :host {
     width: 100%;
@@ -9,14 +9,14 @@
     min-height: 50px;
     padding: 10px 20px;
     border-radius: 2px;
-    background-color: $background-color-3;
+    background-color: $color-2;
     @include dFlex(row, space-between, center);
 }
 
 .status {
     @include dFlex(row, none, center);
     gap: 10px;
-    color: $text-color-6;
+    color: $color-16;
     font-size: normal;
     font-weight: 600;
 }
@@ -24,9 +24,9 @@
 .status__icon {
     height: 35px;
     width: 35px;
-    color: $text-color-7;
+    color: $color-2;
     border-radius: 50%;
-    background-color: $background-color-7;
+    background-color: $color-3;
     @include dFlex(row, center, center);
     img {
         display: none;
@@ -34,8 +34,8 @@
 }
 
 .active, .completed {
-    color: $text-color-6;
-    background-color: $background-color-4;
+    color: $color-16;
+    background-color: $color-7;
 }
 
 .completed {
@@ -52,7 +52,17 @@
 
 .status__text {
     width: max-content;
-    color: $text-color-6;
+    color: $color-16;
     font-size: normal;
     font-weight: 600;
+}
+
+@media (max-width: 430px) {
+    .content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .horizontal-line {
+        display: none;
+    }
 }

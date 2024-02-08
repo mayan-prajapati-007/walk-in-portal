@@ -8,8 +8,8 @@ h2, h4, p {
 
 .accordian-header {
     @include dFlex(row, space-between, center);
-    color: $text-color-1;
-    background-color: $background-color-8;
+    color: $color-4;
+    background-color: $color-10;
     padding: 0px 0px 0px 20px;
     h2 {
         font-size: 16px;
@@ -19,7 +19,7 @@ h2, h4, p {
     span {
         height: 40px;
         width: 30px;
-        border-left: 1px solid $border-color-3;
+        border-left: 1px solid $color-20;
         @include dFlex(row, center, center);
     }
     img {
@@ -30,7 +30,7 @@ h2, h4, p {
 .accordian-body {
     display: flex;
     flex-direction: column;
-    background-color: $background-color-3;
+    background-color: $color-2;
 }
 
 .accordian-body > .horizontal-line {
@@ -45,7 +45,7 @@ h2, h4, p {
         font-size: 12px;
         line-height: 16px;
         text-transform: capitalize;
-        color: $text-color-3;
+        color: $color-15;
         margin-bottom: 16px;
     }
     p {
