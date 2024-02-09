@@ -1,7 +1,9 @@
 @import '../../../../assets/styles/variables';
 @import '../../../../assets/styles/mixins';
 
-h2, h4, p {
+h2,
+h4,
+p {
     margin: 0;
     padding: 0;
 }
@@ -11,17 +13,20 @@ h2, h4, p {
     color: $color-4;
     background-color: $color-10;
     padding: 0px 0px 0px 20px;
+
     h2 {
         font-size: 16px;
         line-height: 40px;
         font-weight: 600;
     }
+
     span {
         height: 40px;
         width: 30px;
         border-left: 1px solid $color-20;
         @include dFlex(row, center, center);
     }
+
     img {
         rotate: 180deg;
     }
@@ -31,15 +36,19 @@ h2, h4, p {
     display: flex;
     flex-direction: column;
     background-color: $color-2;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1s ease-out;
 }
 
-.accordian-body > .horizontal-line {
+.accordian-body>.horizontal-line {
     width: auto;
     margin: 0 20px;
 }
 
 .gross-compensation-package {
     padding: 20px;
+
     h4 {
         font-weight: 600;
         font-size: 12px;
@@ -48,9 +57,23 @@ h2, h4, p {
         color: $color-15;
         margin-bottom: 16px;
     }
+
     p {
         font-size: 14px;
         line-height: 24px;
         font-weight: 600;
+    }
+}
+
+.active {
+    .accordian-body {
+        max-height: fit-content;
+        transition: max-height 1s ease-in;
+    }
+}
+
+.rotate {
+    img {
+        transform: rotate(180deg);
     }
 }

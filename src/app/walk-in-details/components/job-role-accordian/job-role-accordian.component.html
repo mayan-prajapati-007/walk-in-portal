@@ -1,18 +1,18 @@
-<div class="content">
+<div class="content" [ngClass]="{'active': isActive}">
     <div class="accordian-header">
-        <h2>Instructional Designer</h2>
-        <span>
+        <h2>{{ jobRole.title }}</h2>
+        <span [ngClass]="{'rotate': isActive}" (click)="toggleAccordian()">
             <img src="./assets/icons/expand_less_black_24dp.svg" alt="">
         </span>
     </div>
-    <div class="accordian-body">
+    <div class="accordian-body" [id]="'job'+jobRole.id">
         <div class="gross-compensation-package">
             <h4 class="accordian-body-element-title">gross compensation package :</h4>
-            <p class="accordian-body-element-body">Rs. 5,00,000 lpa</p>
+            <p class="accordian-body-element-body">Rs. {{ gross_compensation_package }} lpa</p>
         </div>
         <div class="horizontal-line"></div>
-        <accordian-body-element></accordian-body-element>
+        <accordian-body-element title="Role Description" [body]="jobRole.role_description"></accordian-body-element>
         <div class="horizontal-line"></div>
-        <accordian-body-element></accordian-body-element>
+        <accordian-body-element title="Requirements" [body]="jobRole.role_requirements"></accordian-body-element>
     </div>
 </div>

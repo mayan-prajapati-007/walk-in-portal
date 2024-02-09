@@ -1,39 +1,25 @@
 <div class="content">
-    <span>Expires in 5 days</span>
-    <h2>Walk In for Designer Job Role</h2>
+    <span *ngIf="expiryDays <= 5 && expiryDays > 0">Expires in {{ expiryDays }} days</span>
+    <h2>{{ walkInApplication.title }}</h2>
     <p>Date & Time :</p>
     <div class="date-location-container">
-        <p>10-Jul-2021 to 11-Jul-2021</p>
+        <p>{{ walkInApplication.start_date }} to {{ walkInApplication.end_date }}</p>
         <div class="divider"></div>
         <div class="location-container">
             <img src="./assets/icons/location_on_black_24dp.svg" alt="">
-            <p>Mumbai</p>
+            <p>{{ walkInApplication.location }}</p>
         </div>
     </div>
     <div class="horizontal-line"></div>
     <p>Job Roles :</p>
     <div class="job-role-container">
-        <div class="job-role">
+        <div *ngFor="let jobRole of jobRoles"  class="job-role">
             <span>
                 <img src="./assets/icons/Instructional Designer.svg" alt="">
             </span>
-            <p>Instructional Designer</p>
-        </div>
-        <div class="divider lg"></div>
-        <div class="job-role">
-            <span>
-                <img src="./assets/icons/Software Quality Engineer.svg" alt="">
-            </span>
-            <p>Software Engineer</p>
-        </div>
-        <div class="divider lg"></div>
-        <div class="job-role">
-            <span>
-                <img src="./assets/icons/Software Quality Engineer.svg" alt="">
-            </span>
-            <p>Software Quality Engineer</p>
+            <p>{{ jobRole.title }}</p>
         </div>
     </div>
-    <p class="additional-info">Internship Opportunity for MCA Students</p>
-    <button [routerLink]="['/walk-in-details', 1]">View More Details</button>
+    <p class="additional-info" *ngIf="walkInApplication.additional_info" >{{ walkInApplication.additional_info }}</p>
+    <button [routerLink]="['/walk-in-details', walkInApplication.id]">View More Details</button>
 </div>

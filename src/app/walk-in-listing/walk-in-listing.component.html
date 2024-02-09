@@ -1,5 +1,3 @@
 <div class="content">
-    <walk-in-single></walk-in-single>
-    <walk-in-single></walk-in-single>
-    <walk-in-single></walk-in-single>
+    <walk-in-single *ngFor="let walkInApplication of walkInApplications" [walkInApplication]="walkInApplication"></walk-in-single>
 </div>

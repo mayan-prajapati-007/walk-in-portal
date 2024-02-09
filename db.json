@@ -1,0 +1,175 @@
+{
+    "walk-in-applications": [
+        {
+            "id": "1",
+            "title": "Walk In for Designer Job Role",
+            "start_date": "2021-07-10",
+            "end_date": "2021-07-11",
+            "expiry_date": "2024-02-14",
+            "location": "Mumbai",
+            "additional_info": null,
+            "pre_reqs": {
+                "general_instructions": "- We have a two–year indemnity for permanent candidates. We will provide training to the selected candidates.\n- Candidates who have appeared for any test held by Zeus Learning in the past 12 months will not be allowed to appear for this recruitment test.",
+                "exam_instructions": "- Candidates are requested to log in half an hour prior to the exam start time as they would need to capture their image using a web camera. By taking this test, you are permitting the examination system to capture your video for invigilation purposes.\n- Candidates would not be able to appear for the exam if the web camera attached to their system is not functional.\n- The web camera of your system must be enabled and must remain switched on throughout the examination. In the event of non-receipt of a webcam, your examination will be considered null and void.\n- Candidate’s audio and video will be recorded during the examination and will also be monitored by a live proctor. The proctor may terminate your exam in case he/she observes any malpractice during the exam.\n- Candidates are advised to use their own Laptop/PC with a stable internet connection (min 1 Mbps) during the exam.\n- Candidates cannot use an iOS system/device for this exam.",
+                "min_sys_reqs": "- Personal Laptop or Desktop computer in working condition with good quality camera (you can use Windows 7 and above).\n- The latest version of Google Chrome Browser only.\n- Please note that Internet speed should be minimum 1 Mbps. - Do not use a MacBook or iPad for the proctored exam.",
+                "application_process": "- Every round is an elimination round. Candidates need to clear all rounds to get selected.\n\nRound I : 4th August, 2018\nAptitude Test : 25 Questions\n\nRound II (Interview) : 4th August, 2018."
+            },
+            "venue": {
+                "line1": "Zeus Systems Pvt. Ltd.",
+                "line2": "1402, 14th Floor, Tower B, Peninsula Business Park. Ganpatrao Kadam Marg",
+                "landmark": "Lower Parel (W)",
+                "city": "Mumbai",
+                "pincode": "400013",
+                "phone": "+912266600000"
+            },
+            "job_roles": [
+                1
+            ],
+            "time_slots": [
+                2
+            ]
+        },
+        {
+            "id": "2",
+            "title": "Walk In for Multiple Job Roles",
+            "start_date": "2021-07-03",
+            "end_date": "2021-07-04",
+            "expiry_date": "2021-07-01",
+            "location": "Mumbai",
+            "additional_info": "Internship Opportunity for MCA Students",
+            "pre_reqs": {
+                "general_instructions": "- We have a two–year indemnity for permanent candidates. We will provide training to the selected candidates.\n- Candidates who have appeared for any test held by Zeus Learning in the past 12 months will not be allowed to appear for this recruitment test.",
+                "exam_instructions": "- Candidates are requested to log in half an hour prior to the exam start time as they would need to capture their image using a web camera. By taking this test, you are permitting the examination system to capture your video for invigilation purposes.\n- Candidates would not be able to appear for the exam if the web camera attached to their system is not functional.\n- The web camera of your system must be enabled and must remain switched on throughout the examination. In the event of non-receipt of a webcam, your examination will be considered null and void.\n- Candidate’s audio and video will be recorded during the examination and will also be monitored by a live proctor. The proctor may terminate your exam in case he/she observes any malpractice during the exam.\n- Candidates are advised to use their own Laptop/PC with a stable internet connection (min 1 Mbps) during the exam.\n- Candidates cannot use an iOS system/device for this exam.",
+                "min_sys_reqs": "- Personal Laptop or Desktop computer in working condition with good quality camera (you can use Windows 7 and above).\n- The latest version of Google Chrome Browser only.\n- Please note that Internet speed should be minimum 1 Mbps. - Do not use a MacBook or iPad for the proctored exam.",
+                "application_process": "- Every round is an elimination round. Candidates need to clear all rounds to get selected.\n\nRound I : 4th August, 2018\nAptitude Test : 25 Questions\n\nRound II (Interview) : 4th August, 2018."
+            },
+            "venue": {
+                "line1": "Zeus Systems Pvt. Ltd.",
+                "line2": "1402, 14th Floor, Tower B, Peninsula Business Park. Ganpatrao Kadam Marg",
+                "landmark": "Lower Parel (W)",
+                "city": "Mumbai",
+                "pincode": "400013",
+                "phone": "+912266600000"
+            },
+            "job_roles": [
+                1,
+                2,
+                3
+            ],
+            "time_slots": [
+                1,
+                2
+            ]
+        },
+        {
+            "id": "3",
+            "title": "Walk In for Design and Development Job Role",
+            "start_date": "2021-07-10",
+            "end_date": "2021-07-11",
+            "expiry_date": "2021-07-07",
+            "location": "Mumbai",
+            "additional_info": null,
+            "pre_reqs": {
+                "general_instructions": "- We have a two–year indemnity for permanent candidates. We will provide training to the selected candidates.\n- Candidates who have appeared for any test held by Zeus Learning in the past 12 months will not be allowed to appear for this recruitment test.",
+                "exam_instructions": "- Candidates are requested to log in half an hour prior to the exam start time as they would need to capture their image using a web camera. By taking this test, you are permitting the examination system to capture your video for invigilation purposes.\n- Candidates would not be able to appear for the exam if the web camera attached to their system is not functional.\n- The web camera of your system must be enabled and must remain switched on throughout the examination. In the event of non-receipt of a webcam, your examination will be considered null and void.\n- Candidate’s audio and video will be recorded during the examination and will also be monitored by a live proctor. The proctor may terminate your exam in case he/she observes any malpractice during the exam.\n- Candidates are advised to use their own Laptop/PC with a stable internet connection (min 1 Mbps) during the exam.\n- Candidates cannot use an iOS system/device for this exam.",
+                "min_sys_reqs": "- Personal Laptop or Desktop computer in working condition with good quality camera (you can use Windows 7 and above).\n- The latest version of Google Chrome Browser only.\n- Please note that Internet speed should be minimum 1 Mbps. - Do not use a MacBook or iPad for the proctored exam.",
+                "application_process": "- Every round is an elimination round. Candidates need to clear all rounds to get selected.\n\nRound I : 4th August, 2018\nAptitude Test : 25 Questions\n\nRound II (Interview) : 4th August, 2018."
+            },
+            "venue": {
+                "line1": "Zeus Systems Pvt. Ltd.",
+                "line2": "1402, 14th Floor, Tower B, Peninsula Business Park. Ganpatrao Kadam Marg",
+                "landmark": "Lower Parel (W)",
+                "city": "Mumbai",
+                "pincode": "400013",
+                "phone": "+912266600000"
+            },
+            "job_roles": [
+                1,
+                2
+            ],
+            "time_slots": [
+                1
+            ]
+        }
+    ],
+    "job-roles": [
+        {
+            "id": "1",
+            "title": "Instructional Designer",
+            "gross_compensation_package": 500000,
+            "role_description": "- Generate highly interactive and innovative instructional strategies for e-learning solutions\n- Develop course structure and learning specifications addressing the requirements of the target audience\n- Construct appropriate testing strategies to ensure learners' understanding and performance\n- Address usability issues\n- Keep abreast of new trends in e-learning\n- Ensure that the instructional strategies are as per global standards\n- Prepare instructional design checklists and guidelines\n- Check for quality assurance",
+            "role_requirements": "- Experience in creating instructional plans and course maps.\n- Experience in the use of media like graphics, illustrations, photographs, audio, video, animations, and simulations in instruction\n- Awareness of different instructional design models and familiarity with instructional and learning theories\n- Awareness of latest trends in e-learning and instructional design\n- Strong client consulting/interfacing skills.\n- Ability to guide clients to focus on specific objectives and teaching points\n- Strong meeting facilitation, presentation and interpersonal skills\n- A thorough understanding of the web as an instructional medium\n- Post graduate degree in Education, Instructional Design, Mass Communication or Journalism"
+        },
+        {
+            "id": "2",
+            "title": "Software Engineer",
+            "gross_compensation_package": 700000,
+            "role_description": "- Generate highly interactive and innovative instructional strategies for e-learning solutions\n- Develop course structure and learning specifications addressing the requirements of the target audience\n- Construct appropriate testing strategies to ensure learners' understanding and performance\n- Address usability issues\n- Keep abreast of new trends in e-learning\n- Ensure that the instructional strategies are as per global standards\n- Prepare instructional design checklists and guidelines\n- Check for quality assurance",
+            "role_requirements": "- Experience in creating instructional plans and course maps.\n- Experience in the use of media like graphics, illustrations, photographs, audio, video, animations, and simulations in instruction\n- Awareness of different instructional design models and familiarity with instructional and learning theories\n- Awareness of latest trends in e-learning and instructional design\n- Strong client consulting/interfacing skills.\n- Ability to guide clients to focus on specific objectives and teaching points\n- Strong meeting facilitation, presentation and interpersonal skills\n- A thorough understanding of the web as an instructional medium\n- Post graduate degree in Education, Instructional Design, Mass Communication or Journalism"
+        },
+        {
+            "id": "3",
+            "title": "Software Quality Engineer",
+            "gross_compensation_package": 600000,
+            "role_description": "- Generate highly interactive and innovative instructional strategies for e-learning solutions\n- Develop course structure and learning specifications addressing the requirements of the target audience\n- Construct appropriate testing strategies to ensure learners' understanding and performance\n- Address usability issues\n- Keep abreast of new trends in e-learning\n- Ensure that the instructional strategies are as per global standards\n- Prepare instructional design checklists and guidelines\n- Check for quality assurance",
+            "role_requirements": "- Experience in creating instructional plans and course maps.\n- Experience in the use of media like graphics, illustrations, photographs, audio, video, animations, and simulations in instruction\n- Awareness of different instructional design models and familiarity with instructional and learning theories\n- Awareness of latest trends in e-learning and instructional design\n- Strong client consulting/interfacing skills.\n- Ability to guide clients to focus on specific objectives and teaching points\n- Strong meeting facilitation, presentation and interpersonal skills\n- A thorough understanding of the web as an instructional medium\n- Post graduate degree in Education, Instructional Design, Mass Communication or Journalism"
+        }
+    ],
+    "time-slots": [
+        {
+            "id": "1",
+            "start_time": "10:00",
+            "end_time": "12:00"
+        },
+        {
+            "id": "2",
+            "start_time": "14:00",
+            "end_time": "16:00"
+        }
+    ],
+    "colleges": [
+        {
+            "id": "1",
+            "name": "IIT Bombay",
+            "location": "Mumbai"
+        },
+        {
+            "id": "2",
+            "name": "IIT Delhi",
+            "location": "Delhi"
+        },
+        {
+            "id": "3",
+            "name": "IIT Kharagpur",
+            "location": "Kharagpur"
+        },
+        {
+            "id": "4",
+            "name": "IIT Kanpur",
+            "location": "Kanpur"
+        },
+        {
+            "id": "5",
+            "name": "IIT Madras",
+            "location": "Chennai"
+        }
+    ],
+    "streams": [
+        {
+            "id": "1",
+            "name": "Computer Science"
+        },
+        {
+            "id": "2",
+            "name": "Electrical Engineering"
+        },
+        {
+            "id": "3",
+            "name": "Mechanical Engineering"
+        },
+        {
+            "id": "4",
+            "name": "Civil Engineering"
+        }
+    ]
+}
