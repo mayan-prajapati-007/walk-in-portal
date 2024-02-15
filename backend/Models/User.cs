@@ -12,5 +12,8 @@ public class User
     [Required]
     public string? Password { get; set; }
 
+    public string? Salt { get; set; }
+
+    [Required]
     public int? Role { get; set; }
 }
