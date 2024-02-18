@@ -52,6 +52,10 @@ public class UserInfo : User
 
     public string? AppliedEarlier { get; set; }
 
+    public string? KnownTechnologies { get; set; }
+
+    public string? ExpertTechnologies { get; set; }
+
     public int? YearsOfExperience { get; set; }
 
     public int? CurrentCtc { get; set; }
@@ -61,12 +65,4 @@ public class UserInfo : User
     public DateOnly? NoticePeriodEndDate { get; set; }
 
     public int? NoticePeriodDuration { get; set; }
-
-    public int[]? MainExpertTechnologyIds { get; set; }
-
-    public int[]? MainKnownTechnologyIds { get; set; }
-
-    public Technology[]? OtherExpertTechnologies { get; set; }
-
-    public Technology[]? OtherKnownTechnologies { get; set; }
 }
