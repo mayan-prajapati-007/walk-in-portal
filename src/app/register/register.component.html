@@ -1,4 +1,5 @@
 <div class="content">
     <register-submit></register-submit>
-    <register-form></register-form>
+    <register-form [events]="eventSubject.asObservable()" ></register-form>
+    <button (click)="emitEventChild()">Hello</button>
 </div>

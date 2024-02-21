@@ -4,8 +4,6 @@ namespace Backend.Models;
 
 public class Venue
 {
-    public int Id { get; set; }
-
     [Required]
     public string Line1 { get; set; } = "";
 

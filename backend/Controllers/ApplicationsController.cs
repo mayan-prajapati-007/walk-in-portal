@@ -27,4 +27,21 @@ public class ApplicationsController : ControllerBase
         return Ok(applications);
     }
 
+    [HttpGet("{id}")]
+    [TokenFilter]
+    public IActionResult GetApplicationById([FromServices] MySqlDataSource db, [FromHeader] string token, int id)
+    {
+        var application = new ApplicationService(db).GetApplicationInfoByIdAsync(id).Result;
+        if (application == null)
+        {
+            ModelState.AddModelError("Application", "Application not found.");
+            var problemDetails = new ValidationProblemDetails(ModelState)
+            {
+                Status = StatusCodes.Status404NotFound
+            };
+            return NotFound(problemDetails);
+        }
+        return Ok(application);
+    }
+
 }

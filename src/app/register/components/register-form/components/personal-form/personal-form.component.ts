@@ -1,12 +1,61 @@
 import { Component } from '@angular/core';
+import { UserPersonal } from '../../../../../interfaces/user';
+import { FormDataService } from '../../../../services/form-data/form-data.service';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'personal-form',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './personal-form.component.html',
   styleUrl: './personal-form.component.scss'
 })
 export class PersonalFormComponent {
 
+  
+  userPersonal: UserPersonal;
+  jobRoles: any = [];
+
+  ngOnInit() {
+    // get job roles
+    this.getJobRoles();
+  }
+
+  getJobRoles() {
+    this.formDataService.getJobRoles().then((res) => {
+      this.jobRoles = res;
+      console.log(res);
+    });
+  }
+
+  constructor(private formDataService: FormDataService) {
+    this.userPersonal = {
+      email: '',
+      profileImage: '',
+      firstName: '',
+      lastName: '',
+      phone: '',
+      jobRoles: [],
+      resume: '',
+      portfolio: '',
+      refEmpName: '',
+      emailSubscription: false
+    };
+  }
+
+  onChangesText(event: any) {
+    this.userPersonal = {
+      ...this.userPersonal,
+      [event.name]: event.value
+    };
+    console.log(this.userPersonal);
+  }
+
+  onFileUpload(event: any) {
+    let files = event.files;
+    if( files.length == 0 ) return;
+    let fileToUpload = <File>files[0];
+    const formData = new FormData();
+  }
 }

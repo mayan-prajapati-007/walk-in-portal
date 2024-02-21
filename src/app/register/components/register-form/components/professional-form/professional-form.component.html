@@ -34,21 +34,9 @@
         <div class="technology-group content-element-50 experienced-field">
             <div class="input-group-checkboxes">
                 <label class="main-label" for="expertTech">Select All The Technologies You Expertise In*</label>
-                <div class="input-group-checkbox">
-                    <input type="checkbox" id="javascript" name="expertTech" value="1">
-                    <label for="javascript">Javascript</label>
-                </div>
-                <div class="input-group-checkbox">
-                    <input type="checkbox" id="angularJS" name="expertTech" value="2">
-                    <label for="angularJS">Angular JS</label>
-                </div>
-                <div class="input-group-checkbox">
-                    <input type="checkbox" id="react" name="expertTech" value="3">
-                    <label for="react">React</label>
-                </div>
-                <div class="input-group-checkbox">
-                    <input type="checkbox" id="nodeJS" name="expertTech" value="4">
-                    <label for="nodeJS">Node JS</label>
+                <div class="input-group-checkbox" *ngFor="let technology of technologies">
+                    <input type="checkbox" [id]="technology" name="expertTech" [value]="technology">
+                    <label [for]="technology">{{technology}}</label>
                 </div>
                 <div class="input-group-checkbox">
                     <input type="checkbox" id="otherExpert" name="expertTech" value="0">
@@ -64,21 +52,9 @@
         <div class="technology-group content-element-50">
             <div class="input-group-checkboxes">
                 <label class="main-label" for="knownTech">Select All The Technologies You Are Familiar In</label>
-                <div class="input-group-checkbox">
-                    <input type="checkbox" id="javascript" name="knownTech" value="1">
-                    <label for="javascript">Javascript</label>
-                </div>
-                <div class="input-group-checkbox">
-                    <input type="checkbox" id="angularJS" name="knownTech" value="2">
-                    <label for="angularJS">Angular JS</label>
-                </div>
-                <div class="input-group-checkbox">
-                    <input type="checkbox" id="react" name="knownTech" value="3">
-                    <label for="react">React</label>
-                </div>
-                <div class="input-group-checkbox">
-                    <input type="checkbox" id="nodeJS" name="knownTech" value="4">
-                    <label for="nodeJS">Node JS</label>
+                <div class="input-group-checkbox" *ngFor="let technology of technologies">
+                    <input type="checkbox" [id]="technology" name="knownTech" [value]="technology">
+                    <label [for]="technology">{{technology}}</label>
                 </div>
                 <div class="input-group-checkbox">
                     <input type="checkbox" id="otherKnown" name="knownTech" value="0">

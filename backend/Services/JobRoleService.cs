@@ -7,11 +7,45 @@ namespace Backend.Services;
 public interface IJobRoleService
 {
     Task<ApplicationJobRole[]?> GetJobRolesByApplicationIdAsync(int id);
+    Task<JobRole[]?> GetJobRolesAsync();
 }
 
-public class JobRoleService(MySqlDataSource database)
+public class JobRoleService(MySqlDataSource database) : IJobRoleService
 {
     private readonly MySqlDataSource _database = database;
+
+    public async Task<JobRole[]?> GetJobRolesAsync()
+    {
+        MySqlConnection connection = await _database.OpenConnectionAsync();
+
+        var procedure = "get_all_job_roles";
+
+        var command = new MySqlCommand(procedure, connection)
+        {
+            CommandType = CommandType.StoredProcedure
+        };
+
+        try
+        {
+            var reader = await command.ExecuteReaderAsync();
+            var jobRoles = new List<JobRole>();
+            while (await reader.ReadAsync())
+            {
+                var jobRole = new JobRole
+                {
+                    Id = reader.GetInt32("id"),
+                    Name = reader.GetString("name")
+                };
+                jobRoles.Add(jobRole);
+            }
+            return [.. jobRoles];
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return null;
+        }
+    }
 
     public async Task<ApplicationJobRole[]?> GetJobRolesByApplicationIdAsync(int id)
     {

@@ -10,36 +10,26 @@
         <div class="input-group-dropdown content-body-element">
             <label class="main-label" for="yearOfPassing">Year of Passing*</label>
             <select id="yearOfPassing" name="yearOfPassing">
-                <option value="2020">2020</option>
-                <option value="2021">2021</option>
-                <option value="2022">2022</option>
-                <option value="2023">2023</option>
-                <option value="2024">2024</option>
+                <option *ngFor="let year of yearsOfPassing" [value]="year">{{year}}</option>
             </select>
         </div>
         <div class="content-body-group">
             <div class="input-group-dropdown">
                 <label class="main-label" for="qualifications">Qualification*</label>
                 <select id="qualifications" name="qualifications">
-                    <option value="1">Bachelor in Technology (B.Tech)</option>
-                    <option value="2">Bachelor in Arts (B.A)</option>
-                    <option value="3">Bachelor in Commerce (B.Com)</option>
+                    <option *ngFor="let qualification of qualifications" [value]="qualification.id">{{qualification.name}}</option>
                 </select>
             </div>
             <div class="input-group-dropdown">
                 <label class="main-label" for="streams">Stream*</label>
                 <select id="streams" name="streams">
-                    <option value="1">Information Technology</option>
-                    <option value="2">Computer Engineering</option>
-                    <option value="3">Computer Science and Engineering</option>
+                    <option *ngFor="let stream of streams" [value]="stream.id">{{stream.name}}</option>
                 </select>
             </div>
             <div class="input-group-dropdown">
                 <label class="main-label" for="colleges">College*</label>
                 <select id="colleges" name="colleges">
-                    <option value="1">Pune Institute of Technology (PIT)</option>
-                    <option value="2">Ahmedabad Institute of Technology (AIT)</option>
-                    <option value="3">Mumbai Institute of Technology (MIT)</option>
+                    <option *ngFor="let college of colleges" [value]="college.id">{{college.name}}</option>
                 </select>
             </div>
             <div class="input-group-text">

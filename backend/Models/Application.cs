@@ -22,5 +22,8 @@ public class Application
     public string Location { get; set; } = "";
 
     [Required]
+    public string? AdditionalInfo { get; set; }
+
+    [Required]
     public virtual List<ApplicationJobRole> JobRoles { get; set; } = [];
 }

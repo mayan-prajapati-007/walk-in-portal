@@ -5,7 +5,7 @@ namespace Backend.Models;
 public class ApplicationInfo : Application
 {
     [Required]
-    public string PreRequisites { get; set; } = "";
+    public PreRequisites PreRequisites { get; set; } = new PreRequisites();
 
     [Required]
     public List<TimeSlot> TimeSlots { get; set; } = [];
