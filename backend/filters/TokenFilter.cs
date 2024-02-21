@@ -20,7 +20,8 @@ public class TokenFilterAttribute : ActionFilterAttribute
             };
             context.Result = new BadRequestObjectResult(problemDetails);
         } else {
-            if (TokenGenerator.IsValidToken(context.HttpContext.RequestServices.GetRequiredService<IConfiguration>(), token) == false)
+            var email = TokenGenerator.GetEmailFromToken(token);
+            if (email == string.Empty)
             {
                 context.ModelState.AddModelError("Token", "Token is invalid.");
                 var problemDetails = new ValidationProblemDetails(context.ModelState)

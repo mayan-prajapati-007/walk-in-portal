@@ -4,11 +4,17 @@ using MySqlConnector;
 
 namespace Backend.Services;
 
-public class UserService(MySqlDataSource database)
+public interface IUserService
+{
+    Task<User?> GetUserByEmailAsync(string email);
+    Task<UserInfo?> CreateUserAsync(UserInfo user);
+}
+
+public class UserService(MySqlDataSource database) : IUserService
 {
     private readonly MySqlDataSource _database = database;
 
-    public async Task<User?> GetUserByEmail(string email) {
+    public async Task<User?> GetUserByEmailAsync(string email) {
         MySqlConnection connection = await _database.OpenConnectionAsync();
 
         var procedure = "get_user_by_email";
@@ -37,9 +43,9 @@ public class UserService(MySqlDataSource database)
         return null;
     }
 
-    public async Task<UserInfo?> CreateUser(UserInfo user) {
+    public async Task<UserInfo?> CreateUserAsync(UserInfo user) {
 
-        if(user.Email != null && GetUserByEmail(user.Email).Result != null)
+        if(user.Email != null && GetUserByEmailAsync(user.Email).Result != null)
         {
             return null;
         }
@@ -92,7 +98,7 @@ public class UserService(MySqlDataSource database)
             {
                 try
                 {
-                    await InsertJobRoles(userId.Value, user.JobRoles, command);
+                    await InsertJobRolesAsync(userId.Value, user.JobRoles, command);
                     await transaction.CommitAsync();
                 }
                 catch
@@ -108,7 +114,7 @@ public class UserService(MySqlDataSource database)
         return null;
     }
 
-    private static async Task InsertJobRoles(int userId, int[] jobRoles, MySqlCommand command)
+    private static async Task InsertJobRolesAsync(int userId, int[] jobRoles, MySqlCommand command)
     {
         var jobRoleProcedure = "insert_user_preferes_job_roles";
         command.CommandText = jobRoleProcedure;

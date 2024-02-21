@@ -2,6 +2,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using Backend.Models;
 using System.IdentityModel.Tokens.Jwt;
+using MySqlConnector;
 
 namespace Backend.Services;
 public class TokenGenerator()
@@ -12,7 +13,7 @@ public class TokenGenerator()
         {
             return string.Empty;
         }
-        List<Claim> claims =[ 
+        List<Claim> claims = [
             new Claim(ClaimTypes.Name, user.Email),
             new Claim(ClaimTypes.Role, EnumUserRole.GetRole(user.Role.Value).ToString())
         ];
@@ -31,45 +32,24 @@ public class TokenGenerator()
         );
 
         var jwt = new JwtSecurityTokenHandler().WriteToken(token);
-        
-        return jwt;
-    }
 
-    public static bool IsValidToken(IConfiguration configuration, string token)
-    {
-        var staticToken = configuration.GetSection("StaticToken:Token").Value;
-        if (staticToken == null)
-        {
-            return false;
-        }
-        var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(staticToken));
-        var tokenHandler = new JwtSecurityTokenHandler();
-        try
-        {
-            tokenHandler.ValidateToken(token, new TokenValidationParameters
-            {
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = key,
-                ValidateIssuer = false,
-                ValidateAudience = false,
-                ValidateLifetime = true
-            }, out SecurityToken validatedToken);
-        }
-        catch
-        {
-            return false;
-        }
-        return true;
+        return jwt;
     }
 
     public static string GetEmailFromToken(string token)
     {
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var securityToken = tokenHandler.ReadToken(token) as JwtSecurityToken;
-        var stringClaimValue = securityToken?.Claims.Select(claim => claim.Value).ToArray();
-        if( stringClaimValue != null){
-            return stringClaimValue[0];
+        try
+        {
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var securityToken = tokenHandler.ReadToken(token) as JwtSecurityToken;
+            var stringClaimValue = securityToken?.Claims.Select(claim => claim.Value).ToArray();
+            if (stringClaimValue != null)
+            {
+                return stringClaimValue[0];
+            }
         }
+        catch {}
         return string.Empty;
     }
 }

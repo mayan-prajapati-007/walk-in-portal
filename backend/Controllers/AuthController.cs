@@ -16,7 +16,7 @@ public class AuthController : ControllerBase
     [LoginFilter]
     public IActionResult Login([FromServices] MySqlDataSource db,[FromServices] IConfiguration configuration ,[FromBody] User user)
     {
-        string? token = new LoginService(db, configuration).Login(user).Result;
+        string? token = new LoginService(db, configuration).LoginAsync(user).Result;
         if (token == null)
         {
             ModelState.AddModelError("User", "User not found.");
@@ -33,7 +33,7 @@ public class AuthController : ControllerBase
     [RegisterFilter]
     public IActionResult Register([FromServices] MySqlDataSource db, [FromBody] UserInfo user)
     {
-        UserInfo? userData = new RegisterService(db).Register(user).Result;
+        UserInfo? userData = new RegisterService(db).RegisterAsync(user).Result;
         if (userData == null)
         {
             ModelState.AddModelError("User", "User Data provided is invalid");
@@ -49,16 +49,7 @@ public class AuthController : ControllerBase
     [HttpGet("logout")]
     public IActionResult Logout([FromServices] MySqlDataSource db,[FromServices] IConfiguration configuration, [FromHeader] string token)
     {
-        if (TokenGenerator.IsValidToken(configuration, token))
-        {
-            return Ok();
-        }
-        ModelState.AddModelError("Token", "Token is invalid");
-        var problemDetails = new ValidationProblemDetails(ModelState)
-        {
-            Status = StatusCodes.Status404NotFound
-        };
-        return NotFound(problemDetails);
+        throw new NotImplementedException();
     }
 
 }

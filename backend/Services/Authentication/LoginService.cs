@@ -4,19 +4,26 @@ using MySqlConnector;
 
 namespace Backend.Services.Authentication;
 
+public interface ILoginService
+{
+    Task<string?> LoginAsync(User user);
+    Task<string?> GetTokenAsync(int userId);
+    Task InsertTokenAsync(string token, int userId);
+}
+
 public class LoginService(MySqlDataSource database, IConfiguration configuration)
 {
     private readonly MySqlDataSource _database = database;
     private readonly IConfiguration _configuration = configuration;
 
-    public async Task<string?> Login(User user)
+    public async Task<string?> LoginAsync(User user)
     {
         if (user.Email == null || user.Password == null)
         {
             return null;
         }
 
-        var existingUser = new UserService(_database).GetUserByEmail(user.Email).Result;
+        var existingUser = new UserService(_database).GetUserByEmailAsync(user.Email).Result;
         if (existingUser == null || existingUser.Salt == null)
         {
             return null;
@@ -30,17 +37,17 @@ public class LoginService(MySqlDataSource database, IConfiguration configuration
         {
             return null;
         }
-        var token = GetToken(existingUser.Id).Result;
+        var token = GetTokenAsync(existingUser.Id).Result;
         if (token != null)
         {
             return token;
         }
         token = TokenGenerator.GenerateToken(_configuration, existingUser);
-        await InsertToken(token, existingUser.Id);
+        await InsertTokenAsync(token, existingUser.Id);
         return token;
     }
 
-    public async Task<string?> GetToken(int userId)
+    public async Task<string?> GetTokenAsync(int userId)
     {
         MySqlConnection connection = await _database.OpenConnectionAsync();
         var query = @"SELECT token FROM user_auth_tokens WHERE user_id=@userId";
@@ -57,7 +64,7 @@ public class LoginService(MySqlDataSource database, IConfiguration configuration
         return null;
     }
 
-    public async Task InsertToken(string token, int userId)
+    public async Task InsertTokenAsync(string token, int userId)
     {
         MySqlConnection connection = await _database.OpenConnectionAsync();
         var procedure = "insert_user_token";
