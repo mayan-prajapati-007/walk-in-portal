@@ -11,7 +11,7 @@ public interface ILoginService
     Task InsertTokenAsync(string token, int userId);
 }
 
-public class LoginService(MySqlDataSource database, IConfiguration configuration)
+public class LoginService(MySqlDataSource database, IConfiguration configuration) : ILoginService
 {
     private readonly MySqlDataSource _database = database;
     private readonly IConfiguration _configuration = configuration;

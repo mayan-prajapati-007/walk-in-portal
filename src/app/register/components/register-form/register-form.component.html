@@ -1,6 +1,9 @@
 <div class="content">
     <status-bar></status-bar>
-    <personal-form *ngIf="getFormStatus()==0"></personal-form>
+    <personal-form
+        *ngIf="getFormStatus()==0"
+        [personalFormSubmissionEvent]="personalFormSubmissionEvent"
+    ></personal-form>
     <educational-form *ngIf="getFormStatus()===1"></educational-form>
     <professional-form *ngIf="getFormStatus()===1"></professional-form>
     <review-form *ngIf="getFormStatus()===2"></review-form>

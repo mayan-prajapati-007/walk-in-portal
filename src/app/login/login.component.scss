@@ -34,6 +34,15 @@
     }
 }
 
+.error {
+    font-size: small;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: $color-17;
+    background-color: $color-11;
+}
+
 .card-header>h2 {
     margin: 0;
     text-align: center;

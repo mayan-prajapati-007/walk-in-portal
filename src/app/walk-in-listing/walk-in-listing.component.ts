@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { WalkInSingleComponent } from './components/walk-in-single/walk-in-single.component';
-import { WalkInApplicationData } from '../interfaces/walk-in-application-data';
 import { NgForOf } from '@angular/common';
 import { WalkInApplicationsService } from '../services/data/walk-in-applications.service';
+import { WalkInApplicationList } from '../interfaces/walk-in-application-data';
 
 @Component({
   selector: 'app-walk-in-listing',
@@ -12,11 +12,31 @@ import { WalkInApplicationsService } from '../services/data/walk-in-applications
   styleUrl: './walk-in-listing.component.scss'
 })
 export class WalkInListingComponent {
-  walkInApplications: WalkInApplicationData[] = [];
+  walkInApplications: WalkInApplicationList[] = [];
+  token: string | null = localStorage.getItem('token');
 
   constructor(private walkInApplicationService: WalkInApplicationsService) {
-    this.walkInApplicationService.getWalkInApplicationData().then((walkInApplications) => {
-      this.walkInApplications = walkInApplications;
-    });
+    if (this.token) {
+      this.walkInApplicationService.getWalkInApplicationData(this.token).then((walkInApplications) => {
+        if (walkInApplications === null) {
+          window.location.href = '/login';
+        }
+        this.walkInApplications = walkInApplications;
+      }).catch((error) => {
+        console.error(error);
+      });
+    } else {
+      localStorage.removeItem('token');
+      localStorage.removeItem('rememberMe');
+      localStorage.removeItem('role');
+      localStorage.removeItem('email');
+      window.location.href = '/login';
+    }
+  }
+
+  ngOnInit() {
+    if (!this.token) {
+      window.location.href = '/login';
+    }
   }
 }

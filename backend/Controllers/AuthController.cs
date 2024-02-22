@@ -26,7 +26,7 @@ public class AuthController : ControllerBase
             };
             return NotFound(problemDetails);
         }
-        return Ok(token);
+        return Ok(new { token = token });
     }
 
     [HttpPost("register")]
@@ -47,9 +47,10 @@ public class AuthController : ControllerBase
     }
 
     [HttpGet("logout")]
-    public IActionResult Logout([FromServices] MySqlDataSource db,[FromServices] IConfiguration configuration, [FromHeader] string token)
+    public async Task<IActionResult> LogoutAsync([FromServices] MySqlDataSource db, [FromHeader] string token)
     {
-        throw new NotImplementedException();
+        await new LogoutService(db).LogoutAsync(token);
+        return Ok();
     }
 
 }

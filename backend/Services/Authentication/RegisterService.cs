@@ -9,7 +9,7 @@ public interface IRegisterService
     Task<UserInfo?> RegisterAsync(UserInfo user);
 }
 
-public class RegisterService(MySqlDataSource database)
+public class RegisterService(MySqlDataSource database) : IRegisterService
 {
     private readonly MySqlDataSource _database = database;
 

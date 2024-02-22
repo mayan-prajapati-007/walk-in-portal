@@ -105,7 +105,10 @@ public class ApplicationService(MySqlDataSource database)
                 };
             }
 
-
+            if(application.Id == 0)
+            {
+                return null;
+            }
             var jobRoles = await new JobRoleService(_database).GetJobRolesByApplicationIdAsync(application.Id);
             if (jobRoles != null)
             {

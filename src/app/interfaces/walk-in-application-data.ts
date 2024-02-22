@@ -1,19 +1,23 @@
 import { JobRole } from "./job-role";
 import { TimeSlot } from "./time-slot";
 
-export interface WalkInApplicationData {
+export interface WalkInApplicationList {
     id: string;
     title: string;
-    start_date: string;
-    end_date: string;
-    expiry_date: string;
+    startDate: string;
+    endDate: string;
+    expiryDate: string;
     location: string;
-    additional_info: string | null;
-    pre_reqs: {
-        general_instructions: string;
-        exam_instructions: string;
-        min_sys_reqs: string;
-        application_process: string;
+    additionalInfo: string | null;
+    jobRoles: JobRole[];
+}
+
+export interface WalkInApplicationDetails extends WalkInApplicationList {
+    preRequisites: {
+        generalInstruction: string;
+        examInstruction: string;
+        minSysReqs: string;
+        applicationProcess: string;
     };
     venue: {
         line1: string;
@@ -23,6 +27,5 @@ export interface WalkInApplicationData {
         pincode: string;
         phone: string;
     };
-    job_roles: JobRole[];
-    time_slots: TimeSlot[];
+    timeSlots: TimeSlot[];
 }

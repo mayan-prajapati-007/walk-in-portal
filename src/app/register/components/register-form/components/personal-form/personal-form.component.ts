@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { UserPersonal } from '../../../../../interfaces/user';
 import { FormDataService } from '../../../../services/form-data/form-data.service';
 import { CommonModule } from '@angular/common';
+import { Observable, Subscription } from 'rxjs';
 
 
 @Component({
@@ -12,13 +13,15 @@ import { CommonModule } from '@angular/common';
   styleUrl: './personal-form.component.scss'
 })
 export class PersonalFormComponent {
-
+  @Input() personalFormSubmissionEvent: Observable<void> = new Observable<void>();
   
   userPersonal: UserPersonal;
   jobRoles: any = [];
-
+  private eventsSubscription: Subscription = new Subscription();
   ngOnInit() {
-    // get job roles
+    this.eventsSubscription = this.personalFormSubmissionEvent.subscribe(() => {
+      console.log("Hola I am here!");
+    });
     this.getJobRoles();
   }
 

@@ -17,7 +17,7 @@ export class JobRoleAccordianComponent {
   isActive: boolean = false;
 
   ngOnInit() {
-    this.gross_compensation_package = this.jobRole.gross_compensation_package.toLocaleString('en-IN');
+    this.gross_compensation_package = this.jobRole.grossCompensationPackage.toLocaleString('en-IN');
   }
 
   toggleAccordian() {

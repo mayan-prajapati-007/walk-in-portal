@@ -5,20 +5,23 @@
                 <h2>Log in</h2>
             </div>
             <div class="card-body">
-                <form id="login-form">
+                <form id="login-form" (submit)="login($event)">
+                    <div class="error" *ngIf="errorMessage">
+                        <p>{{errorMessage}}</p>
+                    </div>
                     <div class="input-group-text">
-                        <input type="email" placeholder="Email ID*">
+                        <input type="email" placeholder="Email ID*" [formControl]="email">
                         <p>Forgot Email Id?</p>
                     </div>
                     <div class="input-group-text">
                         <div class="password">
-                            <input type="password" placeholder="Password*">
-                            <img src="./assets/icons/preview.svg" alt="">
+                            <input type="password" id="password" placeholder="Password*" [formControl]="password">
+                            <img src="./assets/icons/preview.svg" alt="" (click)="previewPassword()">
                         </div>
                         <p>Forgot Password?</p>
                     </div>
                     <div class="input-group-remember">
-                        <input type="checkbox" id="rememberMe" name="rememberMe" value="lsRememberMe">
+                        <input type="checkbox" id="rememberMe" name="rememberMe" value="lsRememberMe" [formControl]="rememberMe">
                         <label for="rememberMe">Remember Me</label>
                     </div>
                     <div class="input-group-submit">

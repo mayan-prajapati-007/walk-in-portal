@@ -11,4 +11,14 @@ import { Component, Input } from '@angular/core';
 export class AccordianBodyElementComponent {
   @Input() title!: string;
   @Input() body!: string;
+
+  ngOnInit() {
+    this.body = this.formatBody(this.body);
+  }
+
+  formatBody(body: string) {
+    let newBody = body.replaceAll('\\n\\n', '\n\n');
+    newBody = newBody.replaceAll('\\n', '\n');
+    return newBody;
+  }
 }

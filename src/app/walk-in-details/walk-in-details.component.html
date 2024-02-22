@@ -5,7 +5,7 @@
             <h2>{{ walkInApplication.title }}</h2>
             <p>Date & Time :</p>
             <div class="date-location-container">
-                <p>{{ walkInApplication.start_date }} to {{ walkInApplication.end_date }}</p>
+                <p>{{ walkInApplication.startDate }} to {{ walkInApplication.endDate }}</p>
                 <div class="divider"></div>
                 <div class="location-container">
                     <img src="./assets/icons/location_on_black_24dp.svg" alt="">
@@ -15,11 +15,11 @@
             <div class="horizontal-line"></div>
             <p>Job Roles :</p>
             <div class="job-role-container">
-                <div *ngFor="let jobRole of jobRoles"  class="job-role">
+                <div *ngFor="let jobRole of walkInApplication.jobRoles"  class="job-role">
                     <span>
                         <img src="./assets/icons/Instructional Designer.svg" alt="">
                     </span>
-                    <p>{{ jobRole.title }}</p>
+                    <p>{{ jobRole.jobTitle }}</p>
                 </div>
             </div>
         </div>
@@ -33,22 +33,22 @@
             <div class="accordian-body">
                 <accordian-body-element
                     title="General Instructions"
-                    [body]="walkInApplication.pre_reqs.general_instructions"
+                    [body]="walkInApplication.preRequisites.generalInstruction"
                 ></accordian-body-element>
                 <div class="horizontal-line"></div>
                 <accordian-body-element
                     title="Instructions for the Exam"
-                    [body]="walkInApplication.pre_reqs.exam_instructions"
+                    [body]="walkInApplication.preRequisites.examInstruction"
                 ></accordian-body-element>
                 <div class="horizontal-line"></div>
                 <accordian-body-element
                     title="Minimum System Requirements"
-                    [body]="walkInApplication.pre_reqs.min_sys_reqs"
+                    [body]="walkInApplication.preRequisites.minSysReqs"
                 ></accordian-body-element>
                 <div class="horizontal-line"></div>
                 <accordian-body-element
                     title="Process"
-                    [body]="walkInApplication.pre_reqs.application_process"
+                    [body]="walkInApplication.preRequisites.applicationProcess"
                 ></accordian-body-element>
             </div>
         </div>
@@ -58,18 +58,18 @@
         <div class="time-slot-container">
             <label for="time_slot" class="main-label">Select a Time Slot :</label>
             <div class="input-group-radios">
-                <div *ngFor="let timeSlot of timeSlots" class="input-group-radio">
+                <div *ngFor="let timeSlot of walkInApplication.timeSlots" class="input-group-radio">
                     <input type="radio" [id]="timeSlot.id" name="time_slot" [value]="timeSlot.id">
-                    <label [for]="timeSlot.id">{{ timeSlot.start_time }} to {{ timeSlot.end_time }}</label>
+                    <label [for]="timeSlot.id">{{ timeSlot.startTime }} to {{ timeSlot.endTime }}</label>
                 </div>
             </div>
         </div>
         <div class="horizontal-line"></div>
         <div class="preference-container">
             <label class="main-label" for="preference">Preferred Job Roles*</label>
-            <div *ngFor="let jobRole of jobRoles" class="input-group-checkbox">
-                <input type="checkbox" [id]="jobRole.id" name="preference" [value]="jobRole.id">
-                <label [for]="jobRole.id">{{ jobRole.title }}</label>
+            <div *ngFor="let jobRole of walkInApplication.jobRoles" class="input-group-checkbox">
+                <input type="checkbox" [id]="jobRole.jobRoleId" name="preference" [value]="jobRole.jobRoleId">
+                <label [for]="jobRole.jobRoleId">{{ jobRole.jobTitle }}</label>
             </div>
         </div>
         <div class="horizontal-line"></div>
@@ -81,5 +81,5 @@
             </label>
         </div>
     </div>
-    <job-role-accordian *ngFor="let jobRole of jobRoles" [jobRole]="jobRole"></job-role-accordian>
+    <job-role-accordian *ngFor="let jobRole of walkInApplication.jobRoles" [jobRole]="jobRole"></job-role-accordian>
 </div>

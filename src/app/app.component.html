@@ -1,7 +1,7 @@
 <main>
   <div class="header">
     <img routerLink="/" src="./assets/icons/Zeus-LMS-logo.svg" alt="">
-    <div class="user-profile">
+    <div class="user-profile" *ngIf="token" (click)="logout()">
       <img src="./assets/images/user-profile.jpeg" alt="">
     </div>
   </div>

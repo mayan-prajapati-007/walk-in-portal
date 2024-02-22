@@ -16,8 +16,13 @@ import { Observable, Subscription } from 'rxjs';
   styleUrl: './register-form.component.scss'
 })
 export class RegisterFormComponent {
-  private eventsSubscription: Subscription = new Subscription();
+  @Input() getFormStatus: () => number = () => 0;
+  @Input() nextForm: () => void = () => {};
+  @Input() previousForm: () => void = () => {};
   @Input() events: Observable<void> = new Observable<void>();
+  @Input() personalFormSubmissionEvent: Observable<void> = new Observable<void>();
+
+  private eventsSubscription: Subscription = new Subscription();
   constructor(
     private formStatusService: FormStatusService
     ) { }
@@ -26,20 +31,6 @@ export class RegisterFormComponent {
     this.eventsSubscription = this.events.subscribe(() => {
       console.log("Hola");
     });
-  }
-
-  getFormStatus() {
-    return this.formStatusService.getFormStatus();
-  }
-
-  nextForm() {
-    this.formStatusService.nextForm();
-    window.scrollTo(0, 0);
-  }
-
-  previousForm() {
-    this.formStatusService.previousForm();
-    window.scrollTo(0, 0);
   }
 
 

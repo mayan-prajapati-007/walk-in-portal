@@ -29,7 +29,7 @@ public class ApplicationsController : ControllerBase
 
     [HttpGet("{id}")]
     [TokenFilter]
-    public IActionResult GetApplicationById([FromServices] MySqlDataSource db, [FromHeader] string token, int id)
+    public IActionResult GetApplicationById([FromServices] MySqlDataSource db,[FromHeader] string token , int id)
     {
         var application = new ApplicationService(db).GetApplicationInfoByIdAsync(id).Result;
         if (application == null)
