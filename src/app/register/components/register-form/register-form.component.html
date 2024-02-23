@@ -3,6 +3,7 @@
     <personal-form
         *ngIf="getFormStatus()==0"
         [personalFormSubmissionEvent]="personalFormSubmissionEvent"
+        [copyUserPersonal]="copyUserPersonal"
     ></personal-form>
     <educational-form *ngIf="getFormStatus()===1"></educational-form>
     <professional-form *ngIf="getFormStatus()===1"></professional-form>

@@ -1,11 +1,9 @@
 <div class="content">
     <register-submit [submitForm]="submitForm" ></register-submit>
     <register-form
-        [events]="eventSubject.asObservable()"
         [personalFormSubmissionEvent]="personalFormSubmissionSignal.asObservable()"
         [getFormStatus]="getFormStatus"
         [nextForm]="nextForm"
         [previousForm]="previousForm"
     ></register-form>
-    <button (click)="emitEventChild()">Hello</button>
 </div>

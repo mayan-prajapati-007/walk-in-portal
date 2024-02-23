@@ -47,4 +47,30 @@ public class TimeSlotService(MySqlDataSource database) : ITimeSlotService
 
     }
 
+    public async Task<TimeSlot?> GetTimeSlotByIdAsync(int id)
+    {
+        MySqlConnection connection = await _database.OpenConnectionAsync();
+
+        var query = "SELECT * FROM time_slots WHERE id = @id";
+
+        var command = new MySqlCommand(query, connection);
+
+        command.Parameters.AddWithValue("@id", id);
+
+        var reader = await command.ExecuteReaderAsync();
+
+        if (await reader.ReadAsync())
+        {
+            var timeSlot = new TimeSlot
+            {
+                Id = reader.GetInt32("id"),
+                StartTime = reader.GetTimeSpan("start_time").ToString(),
+                EndTime = reader.GetTimeSpan("end_time").ToString()
+            };
+            return timeSlot;
+        }
+
+        return null;
+    }
+
 }

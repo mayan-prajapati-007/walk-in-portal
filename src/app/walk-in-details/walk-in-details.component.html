@@ -1,11 +1,17 @@
 <div class="content">
+<div class="error" *ngIf="errorMessage">
+    <p>{{errorMessage}}</p>
+</div>
+<div class="success" *ngIf="successMessage">
+    <p>{{successMessage}}</p>
+</div>
     <div class="meta-data-container">
         <div class="meta-data">
-            <button [routerLink]="['/walk-in-details/success', this.walk_in_id]">Apply</button>
+            <button (click)="applyForJob()">Apply</button>
             <h2>{{ walkInApplication.title }}</h2>
             <p>Date & Time :</p>
             <div class="date-location-container">
-                <p>{{ walkInApplication.startDate }} to {{ walkInApplication.endDate }}</p>
+                <p>{{ formattedStartDate }} to {{ formattedEndDate }}</p>
                 <div class="divider"></div>
                 <div class="location-container">
                     <img src="./assets/icons/location_on_black_24dp.svg" alt="">
@@ -59,7 +65,7 @@
             <label for="time_slot" class="main-label">Select a Time Slot :</label>
             <div class="input-group-radios">
                 <div *ngFor="let timeSlot of walkInApplication.timeSlots" class="input-group-radio">
-                    <input type="radio" [id]="timeSlot.id" name="time_slot" [value]="timeSlot.id">
+                    <input type="radio" [id]="timeSlot.id" name="time_slot" [value]="timeSlot.id" (change)="handleTimeSlotSelection(timeSlot.id)">
                     <label [for]="timeSlot.id">{{ timeSlot.startTime }} to {{ timeSlot.endTime }}</label>
                 </div>
             </div>
@@ -68,7 +74,7 @@
         <div class="preference-container">
             <label class="main-label" for="preference">Preferred Job Roles*</label>
             <div *ngFor="let jobRole of walkInApplication.jobRoles" class="input-group-checkbox">
-                <input type="checkbox" [id]="jobRole.jobRoleId" name="preference" [value]="jobRole.jobRoleId">
+                <input type="checkbox" [id]="jobRole.jobRoleId" name="preference" [value]="jobRole.jobRoleId" (change)="handleJobRoleSelection(jobRole.jobRoleId)">
                 <label [for]="jobRole.jobRoleId">{{ jobRole.jobTitle }}</label>
             </div>
         </div>

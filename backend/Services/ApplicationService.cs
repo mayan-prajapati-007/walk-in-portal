@@ -105,7 +105,7 @@ public class ApplicationService(MySqlDataSource database)
                 };
             }
 
-            if(application.Id == 0)
+            if (application.Id == 0)
             {
                 return null;
             }
@@ -133,6 +133,79 @@ public class ApplicationService(MySqlDataSource database)
         {
             Console.WriteLine(e.Message);
             return null;
+        }
+    }
+
+    public async Task<UserApplicationData?> ApplyForApplicationAsync(UserApplication userApplication)
+    {
+        // System.Console.WriteLine(userApplication.Email);
+        // System.Console.WriteLine(userApplication.ApplicationId);
+        // System.Console.WriteLine(userApplication.TimeSlotId);
+        // System.Console.WriteLine(userApplication.Date);
+        // System.Console.WriteLine(userApplication.Resume);
+        // System.Console.WriteLine(userApplication.JobRoleIds);
+        var userId = await new UserService(_database).GetUserIdByEmailAsync(userApplication.Email);
+
+        if (userId == -1)
+        {
+            return null;
+        }
+
+        var userApplicationData = new UserApplicationData();
+
+        MySqlConnection connection = await _database.OpenConnectionAsync();
+
+        MySqlTransaction transaction = await connection.BeginTransactionAsync();
+
+        var procedure = "user_apply";
+
+        var command = new MySqlCommand(procedure, connection)
+        {
+            CommandType = CommandType.StoredProcedure,
+            Transaction = transaction
+        };
+
+        command.Parameters.AddWithValue("@userId", userId);
+        command.Parameters.AddWithValue("@applicationId", userApplication.ApplicationId);
+        command.Parameters.AddWithValue("@timeSlotId", userApplication.TimeSlotId);
+        command.Parameters.AddWithValue("@applicationDate", userApplication.Date);
+        command.Parameters.AddWithValue("@updatedResume", userApplication.Resume);
+
+        try
+        {
+            await command.ExecuteNonQueryAsync();
+            await InsertJobRolesAsync(userApplication.JobRoleIds, command);
+            await transaction.CommitAsync();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            await transaction.RollbackAsync();
+            return null;
+        }
+        userApplicationData.UserId = userId;
+        userApplicationData.ApplicationId = userApplication.ApplicationId;
+
+        var time_slot = await new TimeSlotService(_database).GetTimeSlotByIdAsync(userApplication.TimeSlotId);
+        userApplicationData.TimeSlot = time_slot ?? new TimeSlot();
+
+        userApplicationData.Date = userApplication.Date;
+        userApplicationData.Resume = userApplication.Resume;
+        return userApplicationData;
+    }
+
+    private static async Task InsertJobRolesAsync(List<int> jobRolesIds, MySqlCommand command)
+    {
+        var jobRoleProcedure = "insert_application_preference_job_roles";
+        command.CommandText = jobRoleProcedure;
+        command.Parameters.RemoveAt("@timeSlotId");
+        command.Parameters.RemoveAt("@applicationDate");
+        command.Parameters.RemoveAt("@updatedResume");
+        foreach (var jobRoleId in jobRolesIds)
+        {
+            command.Parameters.AddWithValue("@jobRoleId", jobRoleId);
+            await command.ExecuteNonQueryAsync();
+            command.Parameters.RemoveAt("@jobRoleId");
         }
     }
 }

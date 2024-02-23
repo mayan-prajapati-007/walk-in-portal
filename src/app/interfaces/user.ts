@@ -32,6 +32,8 @@ export interface User {
 
 export interface UserPersonal {
     email: string;
+    password: string;
+    role: number;
     profileImage: string | null;
     firstName: string;
     lastName: string;

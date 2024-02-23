@@ -1,3 +1,6 @@
+<div class="error" *ngIf="errorMessage">
+    <p>{{errorMessage}}</p>
+</div>
 <div class="content">
     <div class="personal-form">
         <div class="input-group-text">
@@ -49,7 +52,7 @@
         <div class="input-picture-group">
             <img src="./assets/images/user-profile.png" alt="">
             <label class="custom-picture-upload">
-                <input type="file" hidden accept="images/*" (change)="onFileUpload($event.target)" />
+                <input type="file" hidden accept="images/*" />
                 Upload Display Picture
             </label>
             <p>Max Image size: 5 MB</p>

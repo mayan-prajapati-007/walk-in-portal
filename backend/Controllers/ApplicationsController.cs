@@ -1,4 +1,5 @@
 using Backend.Filters;
+using Backend.Models;
 using Backend.Services;
 using Microsoft.AspNetCore.Mvc;
 using MySqlConnector;
@@ -42,6 +43,24 @@ public class ApplicationsController : ControllerBase
             return NotFound(problemDetails);
         }
         return Ok(application);
+    }
+
+    [HttpPost("apply")]
+    [TokenFilter]
+    public IActionResult Apply([FromServices] MySqlDataSource db, [FromHeader] string token, [FromBody] UserApplication application)
+    {
+        var userApplicationData = new ApplicationService(db).ApplyForApplicationAsync(application).Result;
+        if(userApplicationData == null)
+        {
+            System.Console.WriteLine("User application data is null");
+            ModelState.AddModelError("Application", "Application not found.");
+            var problemDetails = new ValidationProblemDetails(ModelState)
+            {
+                Status = StatusCodes.Status404NotFound
+            };
+            return NotFound(problemDetails);
+        }
+        return Ok(userApplicationData);
     }
 
 }

@@ -14,6 +14,26 @@ public class UserService(MySqlDataSource database) : IUserService
 {
     private readonly MySqlDataSource _database = database;
 
+    public async Task<int> GetUserIdByEmailAsync(string email)
+    {
+        MySqlConnection connection = await _database.OpenConnectionAsync();
+
+        var query = "SELECT id FROM users WHERE email = @email";
+
+        var command = new MySqlCommand(query, connection);
+
+        command.Parameters.AddWithValue("@email", email);
+
+        var reader = await command.ExecuteReaderAsync();
+
+        if (await reader.ReadAsync())
+        {
+            return reader.GetInt32("id");
+        }
+
+        return -1;
+    }
+
     public async Task<User?> GetUserByEmailAsync(string email) {
         MySqlConnection connection = await _database.OpenConnectionAsync();
 
@@ -114,13 +134,13 @@ public class UserService(MySqlDataSource database) : IUserService
         return null;
     }
 
-    private static async Task InsertJobRolesAsync(int userId, int[] jobRoles, MySqlCommand command)
+    private static async Task InsertJobRolesAsync(int userId, int[] jobRolesIds, MySqlCommand command)
     {
         var jobRoleProcedure = "insert_user_preferes_job_roles";
         command.CommandText = jobRoleProcedure;
         command.Parameters.RemoveAt("@userId");
         command.Parameters.AddWithValue("@userId", userId);
-        foreach (var jobRoleId in jobRoles)
+        foreach (var jobRoleId in jobRolesIds)
         {
             command.Parameters.AddWithValue("@jobRoleId", jobRoleId);
             await command.ExecuteNonQueryAsync();

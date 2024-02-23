@@ -14,13 +14,42 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class PersonalFormComponent {
   @Input() personalFormSubmissionEvent: Observable<void> = new Observable<void>();
+  @Input() copyUserPersonal: (userPersonal: UserPersonal) => void = () => {};
   
-  userPersonal: UserPersonal;
+  userPersonal: UserPersonal = {} as UserPersonal;
   jobRoles: any = [];
   private eventsSubscription: Subscription = new Subscription();
+  errorMessage: string | undefined = undefined;
+  
   ngOnInit() {
-    this.eventsSubscription = this.personalFormSubmissionEvent.subscribe(() => {
-      console.log("Hola I am here!");
+    this.eventsSubscription = this.personalFormSubmissionEvent.subscribe(this.submitPersonalForm.bind(this));
+    this.userPersonal = {
+      email: '',
+      password: '',
+      role: 2,
+      profileImage: 'path/to/image',
+      firstName: '',
+      lastName: '',
+      phone: '',
+      jobRoles: [],
+      resume: 'path/to/resume',
+      portfolio: '',
+      refEmpName: '',
+      emailSubscription: false
+    };
+    this.copyUserPersonal({
+      email: '',
+      password: '',
+      role: 2,
+      profileImage: 'path/to/image',
+      firstName: '',
+      lastName: '',
+      phone: '',
+      jobRoles: [],
+      resume: 'path/to/resume',
+      portfolio: '',
+      refEmpName: '',
+      emailSubscription: false
     });
     this.getJobRoles();
   }
@@ -28,23 +57,11 @@ export class PersonalFormComponent {
   getJobRoles() {
     this.formDataService.getJobRoles().then((res) => {
       this.jobRoles = res;
-      console.log(res);
     });
   }
 
   constructor(private formDataService: FormDataService) {
-    this.userPersonal = {
-      email: '',
-      profileImage: '',
-      firstName: '',
-      lastName: '',
-      phone: '',
-      jobRoles: [],
-      resume: '',
-      portfolio: '',
-      refEmpName: '',
-      emailSubscription: false
-    };
+    
   }
 
   onChangesText(event: any) {
@@ -55,10 +72,8 @@ export class PersonalFormComponent {
     console.log(this.userPersonal);
   }
 
-  onFileUpload(event: any) {
-    let files = event.files;
-    if( files.length == 0 ) return;
-    let fileToUpload = <File>files[0];
-    const formData = new FormData();
+  submitPersonalForm() {
+    console.log("Submitting personal form");
+    this.copyUserPersonal(this.userPersonal);
   }
 }

@@ -7,6 +7,7 @@ import { ReviewFormComponent } from './components/review-form/review-form.compon
 import { CommonModule } from '@angular/common';
 import { FormStatusService } from '../../services/form-status/form-status.service';
 import { Observable, Subscription } from 'rxjs';
+import { UserPersonal } from '../../../interfaces/user';
 
 @Component({
   selector: 'register-form',
@@ -19,19 +20,10 @@ export class RegisterFormComponent {
   @Input() getFormStatus: () => number = () => 0;
   @Input() nextForm: () => void = () => {};
   @Input() previousForm: () => void = () => {};
-  @Input() events: Observable<void> = new Observable<void>();
+  @Input() copyUserPersonal: (userPersonal: UserPersonal) => void = () => {};
   @Input() personalFormSubmissionEvent: Observable<void> = new Observable<void>();
 
-  private eventsSubscription: Subscription = new Subscription();
-  constructor(
-    private formStatusService: FormStatusService
-    ) { }
-
-  ngOnInit() {
-    this.eventsSubscription = this.events.subscribe(() => {
-      console.log("Hola");
-    });
-  }
+  constructor(private formStatusService: FormStatusService) { }
 
 
 }

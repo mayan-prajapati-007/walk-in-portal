@@ -4,4 +4,5 @@ export interface JobRole {
     grossCompensationPackage: number;
     roleDescription: string;
     roleRequirements: string;
+    selected: boolean;
 }
