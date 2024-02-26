@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormDataService } from '../../../../services/form-data/form-data.service';
+import { RegistrationDataService } from '../../../../../services/authentication/registration-data.service';
 
 @Component({
   selector: 'educational-form',
@@ -15,7 +16,13 @@ export class EducationalFormComponent {
   qualifications: any = [];
   streams: any = [];
   colleges: any = [];
-  constructor(private formDataService: FormDataService) {}
+  selectedCollegeName: string = '';
+  selectedCollegeLocation: string = '';
+
+  constructor(
+    private formDataService: FormDataService,
+    private registrationDataService: RegistrationDataService
+  ) { }
 
   ngOnInit() {
     this.yearsOfPassing = FormDataService.years;
@@ -41,5 +48,47 @@ export class EducationalFormComponent {
     this.formDataService.getColleges().then((res) => {
       this.colleges = res;
     });
+  }
+
+  onChangesText(event: any) {
+    if (event.name == 'collegeName') {
+      this.registrationDataService.userEducation.college = {
+        ...this.registrationDataService.userEducation.college,
+        id: 0,
+        name: event.value
+      };
+      this.selectedCollegeLocation = '';
+    }
+    this.registrationDataService.userEducation = {
+      ...this.registrationDataService.userEducation,
+      [event.name]: event.value
+    };
+  }
+
+  handleQualificationSelection(event: any) {
+    let selectedQualification = this.qualifications.find((qualification: { id: number; }) => qualification.id === +event.target.value);
+    this.registrationDataService.userEducation.qualification = {
+      id: selectedQualification.id,
+      name: selectedQualification.name
+    };
+  }
+
+  handleStreamSelection(event: any) {
+    let selectedStream = this.streams.find((stream: { id: number; }) => stream.id === +event.target.value);
+    this.registrationDataService.userEducation.stream = {
+      id: selectedStream.id,
+      name: selectedStream.name
+    }
+  }
+
+  handleCollegeSelection(event: any) {
+    let selectedCollege = this.colleges.find((college: { id: number; }) => college.id === +event.target.value);
+    if (selectedCollege) {
+      this.registrationDataService.userEducation.college = {
+        id: selectedCollege.id,
+        name: selectedCollege.name,
+        location: selectedCollege.location
+      };
+    }
   }
 }

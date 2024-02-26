@@ -5,41 +5,44 @@
     <div class="content-body">
         <div class="input-group-text content-body-element">
             <label class="main-label" for="aggregatePercentage">Aggregate Percentage*</label>
-            <input id="aggregatePercentage" type="text" />
+            <input id="aggregatePercentage" type="text" name="aggregatePercentage" (change)="onChangesText($event.target)" />
         </div>
         <div class="input-group-dropdown content-body-element">
             <label class="main-label" for="yearOfPassing">Year of Passing*</label>
-            <select id="yearOfPassing" name="yearOfPassing">
+            <select id="yearOfPassing" name="yearOfPassing" (change)="onChangesText($event.target)">
                 <option *ngFor="let year of yearsOfPassing" [value]="year">{{year}}</option>
             </select>
         </div>
         <div class="content-body-group">
             <div class="input-group-dropdown">
                 <label class="main-label" for="qualifications">Qualification*</label>
-                <select id="qualifications" name="qualifications">
+                <select id="qualifications" name="qualifications" (change)="handleQualificationSelection($event)">
+                    <option [value]="0">-- Select Qualification --</option>
                     <option *ngFor="let qualification of qualifications" [value]="qualification.id">{{qualification.name}}</option>
                 </select>
             </div>
             <div class="input-group-dropdown">
                 <label class="main-label" for="streams">Stream*</label>
-                <select id="streams" name="streams">
+                <select id="streams" name="streams" (change)="handleStreamSelection($event)">
+                    <option [value]="0">-- Select Stream --</option>
                     <option *ngFor="let stream of streams" [value]="stream.id">{{stream.name}}</option>
                 </select>
             </div>
             <div class="input-group-dropdown">
                 <label class="main-label" for="colleges">College*</label>
-                <select id="colleges" name="colleges">
+                <select id="colleges" name="colleges" (change)="handleCollegeSelection($event)">
+                    <option [value]="0">-- Select College --</option>
                     <option *ngFor="let college of colleges" [value]="college.id">{{college.name}}</option>
                 </select>
             </div>
             <div class="input-group-text">
                 <label class="main-label" for="otherCollege">If others, please enter your college name</label>
-                <input id="otherCollege" type="text" />
+                <input id="otherCollege" type="text" [value]="selectedCollegeName" name="collegeName" (change)="onChangesText($event.target)" />
             </div>
         </div>
         <div class="input-group-text content-body-element">
             <label class="main-label" for="otherCollegeLocation">Where is your college located?*</label>
-            <input id="otherCollegeLocation" type="text" />
+            <input id="otherCollegeLocation" type="text" [value]="selectedCollegeLocation" name="collegeLocation" (change)="onChangesText($event.target)" />
         </div>
     </div>
 </div>

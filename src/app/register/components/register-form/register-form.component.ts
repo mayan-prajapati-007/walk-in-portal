@@ -6,8 +6,7 @@ import { ProfessionalFormComponent } from './components/professional-form/profes
 import { ReviewFormComponent } from './components/review-form/review-form.component';
 import { CommonModule } from '@angular/common';
 import { FormStatusService } from '../../services/form-status/form-status.service';
-import { Observable, Subscription } from 'rxjs';
-import { UserPersonal } from '../../../interfaces/user';
+import { RegistrationDataService } from '../../../services/authentication/registration-data.service';
 
 @Component({
   selector: 'register-form',
@@ -20,10 +19,8 @@ export class RegisterFormComponent {
   @Input() getFormStatus: () => number = () => 0;
   @Input() nextForm: () => void = () => {};
   @Input() previousForm: () => void = () => {};
-  @Input() copyUserPersonal: (userPersonal: UserPersonal) => void = () => {};
-  @Input() personalFormSubmissionEvent: Observable<void> = new Observable<void>();
 
-  constructor(private formStatusService: FormStatusService) { }
+  constructor(private formStatusService: FormStatusService, private registrationDataService: RegistrationDataService) { }
 
 
 }

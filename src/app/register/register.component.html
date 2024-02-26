@@ -1,7 +1,12 @@
 <div class="content">
+    <div class="error" *ngIf="errorMessage">
+        <p>{{errorMessage}}</p>
+    </div>
+    <div class="success" *ngIf="successMessage">
+        <p>{{successMessage}}</p>
+    </div>
     <register-submit [submitForm]="submitForm" ></register-submit>
     <register-form
-        [personalFormSubmissionEvent]="personalFormSubmissionSignal.asObservable()"
         [getFormStatus]="getFormStatus"
         [nextForm]="nextForm"
         [previousForm]="previousForm"

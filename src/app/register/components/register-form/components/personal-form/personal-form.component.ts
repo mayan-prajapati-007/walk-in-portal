@@ -2,7 +2,8 @@ import { Component, Input } from '@angular/core';
 import { UserPersonal } from '../../../../../interfaces/user';
 import { FormDataService } from '../../../../services/form-data/form-data.service';
 import { CommonModule } from '@angular/common';
-import { Observable, Subscription } from 'rxjs';
+import { RegistrationDataService } from '../../../../../services/authentication/registration-data.service';
+import { JobRole } from '../../../../../interfaces/job-role';
 
 
 @Component({
@@ -13,67 +14,48 @@ import { Observable, Subscription } from 'rxjs';
   styleUrl: './personal-form.component.scss'
 })
 export class PersonalFormComponent {
-  @Input() personalFormSubmissionEvent: Observable<void> = new Observable<void>();
-  @Input() copyUserPersonal: (userPersonal: UserPersonal) => void = () => {};
   
   userPersonal: UserPersonal = {} as UserPersonal;
-  jobRoles: any = [];
-  private eventsSubscription: Subscription = new Subscription();
+  jobRoles: any[] = [];
+  selectedJobRoles: { id:number, name: string }[] = [];
   errorMessage: string | undefined = undefined;
   
-  ngOnInit() {
-    this.eventsSubscription = this.personalFormSubmissionEvent.subscribe(this.submitPersonalForm.bind(this));
-    this.userPersonal = {
-      email: '',
-      password: '',
-      role: 2,
-      profileImage: 'path/to/image',
-      firstName: '',
-      lastName: '',
-      phone: '',
-      jobRoles: [],
-      resume: 'path/to/resume',
-      portfolio: '',
-      refEmpName: '',
-      emailSubscription: false
-    };
-    this.copyUserPersonal({
-      email: '',
-      password: '',
-      role: 2,
-      profileImage: 'path/to/image',
-      firstName: '',
-      lastName: '',
-      phone: '',
-      jobRoles: [],
-      resume: 'path/to/resume',
-      portfolio: '',
-      refEmpName: '',
-      emailSubscription: false
-    });
+  ngOnInit(){
     this.getJobRoles();
   }
 
   getJobRoles() {
     this.formDataService.getJobRoles().then((res) => {
       this.jobRoles = res;
+      console.log(res)
     });
   }
 
-  constructor(private formDataService: FormDataService) {
-    
-  }
+  constructor(
+    private formDataService: FormDataService,
+    private registrationDataService: RegistrationDataService
+  ) {}
 
   onChangesText(event: any) {
-    this.userPersonal = {
-      ...this.userPersonal,
+    this.registrationDataService.userPersonal = {
+      ...this.registrationDataService.userPersonal,
       [event.name]: event.value
     };
-    console.log(this.userPersonal);
   }
 
-  submitPersonalForm() {
-    console.log("Submitting personal form");
-    this.copyUserPersonal(this.userPersonal);
+  handleJobRoleSelection(jobRoleIdx: number) {
+    let jobRole = this.jobRoles[jobRoleIdx - 1];
+    if(this.selectedJobRoles.includes(jobRole)) {
+      this.selectedJobRoles = this.selectedJobRoles.filter((role) => role.id !== jobRole.id);
+    } else {
+      this.selectedJobRoles.push(jobRole);
+    }
+    console.log(this.selectedJobRoles);
+    this.registrationDataService.userPersonal.jobRoles = this.selectedJobRoles;
   }
+  
+  handleEmailSubscription(event: any) {
+    this.registrationDataService.userPersonal.emailSubscription = event.target.checked;
+  }
+
 }

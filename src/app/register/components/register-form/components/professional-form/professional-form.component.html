@@ -6,37 +6,37 @@
         <label for="applicant_type" class="main-label">Applicant type*</label>
         <div class="input-group-radios">
             <div class="input-group-radio">
-                <input type="radio" id="fresher" name="applicant_type" value="fresher">
+                <input type="radio" id="fresher" name="applicant_type" value="fresher" (change)="handleApplicantTypeChange($event)">
                 <label for="fresher">Fresher</label>
             </div>
             <div class="input-group-radio">
-                <input type="radio" id="experienced" name="applicant_type" value="experienced">
+                <input type="radio" id="experienced" name="applicant_type" value="experienced" (change)="handleApplicantTypeChange($event)">
                 <label for="experienced">Experienced</label>
             </div>
         </div>
     </div>
-    <div class="content-body">
-        <div class="input-group-text content-element-25 experienced-field">
+    <div *ngIf="applicantType" class="content-body">
+        <div *ngIf="applicantType === 'experienced'" class="input-group-text content-element-25 experienced-field">
             <label class="main-label" for="yearsOfExperience">Years of Experience*</label>
-            <input id="yearsOfExperience" type="text" />
+            <input id="yearsOfExperience" type="text" name="yearsOfExperience" (change)="onChangesText($event.target)" />
         </div>
 
-        <div class="input-group-text content-element-25 experienced-field">
+        <div *ngIf="applicantType === 'experienced'" class="input-group-text content-element-25 experienced-field">
             <label class="main-label" for="currentCTC*">Current CTC* (In Rupees)</label>
-            <input id="currentCTC" type="text" />
+            <input id="currentCTC" type="text" name="currentCtc" (change)="onChangesText($event.target)" />
         </div>
 
-        <div class="input-group-text content-element-25 experienced-field">
+        <div *ngIf="applicantType === 'experienced'" class="input-group-text content-element-25 experienced-field">
             <label class="main-label" for="expectedCTC*">Expected CTC* (In Rupees)</label>
-            <input id="expectedCTC" type="text" />
+            <input id="expectedCTC" type="text" name="expectedCtc" (change)="onChangesText($event.target)" />
         </div>
 
-        <div class="technology-group content-element-50 experienced-field">
+        <div *ngIf="applicantType === 'experienced'" class="technology-group content-element-50 experienced-field">
             <div class="input-group-checkboxes">
                 <label class="main-label" for="expertTech">Select All The Technologies You Expertise In*</label>
                 <div class="input-group-checkbox" *ngFor="let technology of technologies">
-                    <input type="checkbox" [id]="technology" name="expertTech" [value]="technology">
-                    <label [for]="technology">{{technology}}</label>
+                    <input type="checkbox" [id]="'et'+technology" name="expertTech" [value]="technology" (change)="handleExpertTechnologies($event)">
+                    <label [for]="'et'+technology">{{technology}}</label>
                 </div>
                 <div class="input-group-checkbox">
                     <input type="checkbox" id="otherExpert" name="expertTech" value="0">
@@ -49,12 +49,12 @@
             </div>
         </div>
 
-        <div class="technology-group content-element-50">
+        <div *ngIf="applicantType === 'fresher' || applicantType === 'experienced'" class="technology-group content-element-50">
             <div class="input-group-checkboxes">
                 <label class="main-label" for="knownTech">Select All The Technologies You Are Familiar In</label>
                 <div class="input-group-checkbox" *ngFor="let technology of technologies">
-                    <input type="checkbox" [id]="technology" name="knownTech" [value]="technology">
-                    <label [for]="technology">{{technology}}</label>
+                    <input type="checkbox" [id]="'kt'+technology" name="knownTech" [value]="technology" (change)="handleKnownTechnologies($event)">
+                    <label [for]="'kt'+technology">{{technology}}</label>
                 </div>
                 <div class="input-group-checkbox">
                     <input type="checkbox" id="otherKnown" name="knownTech" value="0">
@@ -67,16 +67,16 @@
             </div>
         </div>
 
-        <div class="notice-container experienced-field">
+        <div *ngIf="applicantType === 'experienced'" class="notice-container experienced-field">
             <div class="notice-radio-container">
                 <label for="notice_period" class="main-label">Are you currently on notice period?*</label>
                 <div class="input-group-radios">
                     <div class="input-group-radio">
-                        <input type="radio" id="noticeY" name="notice_period" value="noticeY">
+                        <input type="radio" id="noticeY" name="notice_period" value="noticeY" (change)="toggleNoticePeriod($event)">
                         <label for="noticeY">Yes</label>
                     </div>
                     <div class="input-group-radio">
-                        <input type="radio" id="noticeN" name="notice_period" value="noticeN">
+                        <input type="radio" id="noticeN" name="notice_period" value="noticeN" (change)="toggleNoticePeriod($event)">
                         <label for="noticeN">No</label>
                     </div>
                 </div>
@@ -85,39 +85,38 @@
                 <div class="input-group-date">
                     <label class="main-label" for="noticePeriodEndDate">If Yes, when will your notice period
                         end?*</label>
-                    <input id="noticePeriodEndDate" type="date" />
+                    <input id="noticePeriodEndDate" type="date" name="noticePeriodEndDate" (change)="onChangesText($event.target)" />
                 </div>
                 <div class="input-group-dropdown">
                     <label class="main-label" for="noticePeriodDuration">How long is your notice period?* (Mention in
                         months)</label>
-                    <select id="noticePeriodDuration" name="noticePeriodDuration">
-                        <option value="1">1 month</option>
-                        <option value="2">2 months</option>
-                        <option value="3">3 months</option>
-                        <option value="4">4 months</option>
-                        <option value="5">5 months</option>
-                    </select>
+                    <input id="noticePeriodDuration" type="number" name="noticePeriodDuration" (change)="onChangesText($event.target)" />
                 </div>
             </div>
         </div>
 
-        <div class="applied-earlier-container content-element-50">
+        <div *ngIf="applicantType === 'fresher' || applicantType === 'experienced'" class="applied-earlier-container content-element-50">
             <label for="applied_earlier" class="main-label">Have You Appeared For Any Test By Zeus in the past 12
                 months?*</label>
             <div class="input-group-radios">
                 <div class="input-group-radio">
-                    <input type="radio" id="appliedY" name="applied_earlier" value="appliedY">
+                    <input type="radio" id="appliedY" name="applied_earlier" value="appliedY" (change)="toggleAppliedEarlier($event)">
                     <label for="appliedY">Yes</label>
                 </div>
                 <div class="input-group-radio">
-                    <input type="radio" id="appliedN" name="applied_earlier" value="appliedN">
+                    <input type="radio" id="appliedN" name="applied_earlier" value="appliedN" (change)="toggleAppliedEarlier($event)">
                     <label for="appliedN">No</label>
                 </div>
             </div>
 
             <div class="input-group-text">
                 <label class="main-label" for="appliedEarlierRole*">If Yes, which role did you apply for?</label>
-                <input id="appliedEarlierRole" type="text" />
+                <input
+                    id="appliedEarlierRole"
+                    type="text"
+                    [disabled]="disabledAppliedEarlier"
+                    name="appliedEarlierRole"
+                    (change)="onChangesText($event.target)" />
             </div>
         </div>
     </div>

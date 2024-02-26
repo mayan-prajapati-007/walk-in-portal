@@ -9,33 +9,33 @@ export class ValidateUserPersonalService {
 
   constructor() { }
 
-  logMe() {
-    console.log("Hola");
-  }
-
   validateForm(userPersonal: UserPersonal) {
-    while(this.errorMessage === undefined) {
-      this.errorMessage = this.validateEmail(userPersonal.email);
-      if (this.errorMessage !== undefined) {
-        return this.errorMessage;
-      }
-      this.errorMessage = this.validateName(userPersonal.firstName);
-      if (this.errorMessage !== undefined) {
-        return this.errorMessage;
-      }
-      this.errorMessage = this.validateName(userPersonal.lastName);
-      if (this.errorMessage !== undefined) {
-        return this.errorMessage;
-      }
-      this.errorMessage = this.validatePhone(userPersonal.phone);
-      if (this.errorMessage !== undefined) {
-        return this.errorMessage;
-      }
+    this.errorMessage = this.validateEmail(userPersonal.email);
+    if (this.errorMessage !== undefined) {
+      return this.errorMessage;
     }
+    this.errorMessage = this.validateName(userPersonal.firstName);
+    if (this.errorMessage !== undefined) {
+      return this.errorMessage;
+    }
+    this.errorMessage = this.validateName(userPersonal.lastName);
+    if (this.errorMessage !== undefined) {
+      return this.errorMessage;
+    }
+    this.errorMessage = this.validatePhone(userPersonal.phone);
+    if (this.errorMessage !== undefined) {
+      return this.errorMessage;
+    }
+    this.errorMessage = this.validateJobRoles(userPersonal.jobRoles);
+    if (this.errorMessage !== undefined) {
+      return this.errorMessage;
+    }
+    this.errorMessage = undefined;
     return this.errorMessage;
   }
 
   validateEmail(email: string) {
+    if (email === undefined) return "Email is required";
     if (email.length === 0) {
       return "Email is required";
     } else if (!email.includes('@')) {
@@ -46,6 +46,7 @@ export class ValidateUserPersonalService {
   }
 
   validatePassword(password: string) {
+    if (password === undefined) return "Password is required";
     if (password.length === 0) {
       return "Password is required";
     } else if (password.length < 8) {
@@ -56,6 +57,7 @@ export class ValidateUserPersonalService {
   }
 
   validateName(name: string) {
+    if (name === undefined) return "Name is required";
     if (name.length === 0) {
       return "Name is required";
     } else {
@@ -73,5 +75,10 @@ export class ValidateUserPersonalService {
     } else {
       return undefined;
     }
+  }
+
+  validateJobRoles(jobRoles: any[]) {
+    if (jobRoles === undefined) return "Select at least one job role";
+    return undefined;
   }
 }

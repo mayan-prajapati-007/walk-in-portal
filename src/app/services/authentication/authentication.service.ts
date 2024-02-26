@@ -33,4 +33,16 @@ export class AuthenticationService {
     }
     return false;
   }
+
+  async register(user: any) {
+    const response = await fetch(`${this.API_URL}/auth/register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    });
+    const data = await response.json();
+    return data;
+  }
 }

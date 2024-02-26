@@ -4,71 +4,26 @@ import { RegisterFormComponent } from './components/register-form/register-form.
 import { Subject, Subscription } from 'rxjs';
 import { FormStatusService } from './services/form-status/form-status.service';
 import { User, UserPersonal } from '../interfaces/user';
+import { RegistrationDataService } from '../services/authentication/registration-data.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [RegisterSubmitComponent, RegisterFormComponent],
+  imports: [RegisterSubmitComponent, RegisterFormComponent, CommonModule ],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+  styleUrl: './register.component.scss',
+  providers: [FormStatusService, RegistrationDataService]
 })
 export class RegisterComponent {
-  personalFormSubmissionSignal: Subject<void> = new Subject<void>();
-  user: User = {} as User;
 
-  copyUserPersonal() {
-    console.log("personal form data copied");
-  }
+  errorMessage: string | undefined = undefined;
+  successMessage: string | undefined = undefined;
 
-  emitPersonalFormSubmissionSignal() {
-    console.log("Inside emitPersonalFormSubmissionSignal()-------")
-    this.personalFormSubmissionSignal.next();
-  }
-
-  constructor(private formStatusService: FormStatusService) {
-    
-  }
-
-
-  ngOnInit() {
-    this.user = {
-      id: 0,
-      email: '',
-      password: '',
-      role: 2,
-      profileImage: null,
-      firstName: '',
-      lastName: '',
-      phone: null,
-      jobRoles: [],
-      resume: null,
-      portfolio: null,
-      refEmpName: null,
-      emailSubscription: false,
-      collegeId: 0,
-      collegeName: '',
-      collegeLocation: '',
-      qualificationId: 0,
-      streamId: 0,
-      yearOfPassing: 0,
-      aggregatePercentage: 0,
-      applicantType: 0,
-      appliedEarlier: null,
-      knownTechnologies: null,
-      expertTechnologies: null,
-      yearsOfExperience: null,
-      currentCtc: null,
-      expectedCtc: null,
-      noticePeriodEndDate: null,
-      noticePeriodDuration: null
-    }
-  }
-
-
-
-
-
-
+  constructor(
+    private formStatusService: FormStatusService,
+    private registrationDataService: RegistrationDataService
+  ) { }
 
 
   // Handling the form submission
@@ -82,11 +37,25 @@ export class RegisterComponent {
   }
 
   nextForm() {
-    console.log("clicked on next button");
-    console.log("emmitting personal form submission signal");
-    this.emitPersonalFormSubmissionSignal();
-    console.log("emitted personal form submission signal");
-    console.log("moving to next form");
+    var formStatus = this.formStatusService.getFormStatus();
+    if(formStatus === 0) { // If the form is the first form
+      var erroMessage = this.registrationDataService.copyUserPersonalData();
+      if (erroMessage) {
+        alert(erroMessage);
+        return;
+      }
+    } else if(formStatus === 1) { // If the form is the second form
+      var erroMessage = this.registrationDataService.copyUserEducationData();
+      if (erroMessage) {
+        alert(erroMessage);
+        return;
+      }
+      erroMessage = this.registrationDataService.copyUserExperienceData();
+      if (erroMessage) {
+        alert(erroMessage);
+        return;
+      }
+    }
     this.formStatusService.nextForm();
     window.scrollTo(0, 0);
   }

@@ -32,9 +32,9 @@
         </div>
         <div class="input-group-checkboxes">
             <label class="main-label" for="preference">Preferred Job Roles*</label>
-            <div class="input-group-checkbox" *ngFor="let item of jobRoles">
-                <input type="checkbox" [id]="item.name" name="preference" [value]="item.id">
-                <label [for]="item.name">{{item.name}}</label>
+            <div class="input-group-checkbox" *ngFor="let jobRole of jobRoles">
+                <input type="checkbox" [id]="jobRole.name" name="preference" [value]="jobRole.id" (change)="handleJobRoleSelection(jobRole.id)">
+                <label [for]="jobRole.name">{{jobRole.name}}</label>
             </div>
         </div>
         <div class="input-group-text">
@@ -44,7 +44,7 @@
             <input id="refEmpName" type="text" name="refEmpName" (input)="onChangesText($event.target)" />
         </div>
         <div class="input-group-checkbox">
-            <input type="checkbox" id="emailSub" name="emailSub" value="IsEmailSub">
+            <input type="checkbox" id="emailSub" name="emailSub" value="IsEmailSub" (change)="handleEmailSubscription($event)">
             <label for="emailSub">Send me job related updates via mail</label>
         </div>
     </div>
