@@ -39,6 +39,10 @@ public class ApplicationService(MySqlDataSource database)
                 applications.Add(application);
             }
 
+            await reader.CloseAsync();
+
+            await connection.CloseAsync();
+
             foreach (var application in applications)
             {
                 var jobRoles = await new JobRoleService(_database).GetJobRolesByApplicationIdAsync(application.Id);
@@ -54,9 +58,8 @@ public class ApplicationService(MySqlDataSource database)
 
             return [.. applications];
         }
-        catch (Exception e)
+        catch
         {
-            Console.WriteLine(e.Message);
             return null;
         }
     }
@@ -105,6 +108,9 @@ public class ApplicationService(MySqlDataSource database)
                 };
             }
 
+            await reader.CloseAsync();
+            await connection.CloseAsync();
+
             if (application.Id == 0)
             {
                 return null;
@@ -129,21 +135,14 @@ public class ApplicationService(MySqlDataSource database)
 
             return application;
         }
-        catch (Exception e)
+        catch
         {
-            Console.WriteLine(e.Message);
             return null;
         }
     }
 
     public async Task<UserApplicationData?> ApplyForApplicationAsync(UserApplication userApplication)
     {
-        // System.Console.WriteLine(userApplication.Email);
-        // System.Console.WriteLine(userApplication.ApplicationId);
-        // System.Console.WriteLine(userApplication.TimeSlotId);
-        // System.Console.WriteLine(userApplication.Date);
-        // System.Console.WriteLine(userApplication.Resume);
-        // System.Console.WriteLine(userApplication.JobRoleIds);
         var userId = await new UserService(_database).GetUserIdByEmailAsync(userApplication.Email);
 
         if (userId == -1)
@@ -177,11 +176,14 @@ public class ApplicationService(MySqlDataSource database)
             await InsertJobRolesAsync(userApplication.JobRoleIds, command);
             await transaction.CommitAsync();
         }
-        catch (Exception e)
+        catch
         {
-            Console.WriteLine(e.Message);
             await transaction.RollbackAsync();
             return null;
+        }
+        finally
+        {
+            await connection.CloseAsync();
         }
         userApplicationData.UserId = userId;
         userApplicationData.ApplicationId = userApplication.ApplicationId;

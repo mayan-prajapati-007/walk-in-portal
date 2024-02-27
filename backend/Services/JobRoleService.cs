@@ -38,11 +38,12 @@ public class JobRoleService(MySqlDataSource database) : IJobRoleService
                 };
                 jobRoles.Add(jobRole);
             }
+            await reader.CloseAsync();
+            await connection.CloseAsync();
             return [.. jobRoles];
         }
-        catch (Exception e)
+        catch
         {
-            Console.WriteLine(e.Message);
             return null;
         }
     }
@@ -60,7 +61,8 @@ public class JobRoleService(MySqlDataSource database) : IJobRoleService
 
         command.Parameters.AddWithValue("@id", id);
 
-        try {
+        try
+        {
             var reader = await command.ExecuteReaderAsync();
             var jobRoles = new List<ApplicationJobRole>();
             while (await reader.ReadAsync())
@@ -76,8 +78,9 @@ public class JobRoleService(MySqlDataSource database) : IJobRoleService
                 jobRoles.Add(jobRole);
             }
             return [.. jobRoles];
-        } catch (Exception e) {
-            Console.WriteLine(e.Message);
+        }
+        catch
+        {
             return null;
         }
 

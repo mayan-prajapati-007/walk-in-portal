@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environment/environment';
+import { User } from '../../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +35,7 @@ export class AuthenticationService {
     return false;
   }
 
-  async register(user: any) {
+  async register(user: User) {
     const response = await fetch(`${this.API_URL}/auth/register`, {
       method: 'POST',
       headers: {

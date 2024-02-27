@@ -1,4 +1,3 @@
-using Backend.Filters;
 using Backend.Services;
 using Microsoft.AspNetCore.Mvc;
 using MySqlConnector;

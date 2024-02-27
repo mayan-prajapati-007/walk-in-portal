@@ -27,8 +27,10 @@ export class RegisterComponent {
 
 
   // Handling the form submission
-  submitForm(s: any) : void {
-    console.log("Form submitted");
+  submitForm() : void {
+    this.registrationDataService.registerUser();
+    alert("User Created Successfully!, Password is the email id before @. Please login to continue.");
+    window.location.href = '/login';
   }
 
   // Handling the form status

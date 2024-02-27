@@ -37,11 +37,12 @@ public class StreamService(MySqlDataSource database) : IStreamService
                 };
                 streams.Add(stream);
             }
+            await reader.CloseAsync();
+            await connection.CloseAsync();
             return [.. streams];
         }
-        catch (Exception e)
+        catch
         {
-            Console.WriteLine(e.Message);
             return null;
         }
     }

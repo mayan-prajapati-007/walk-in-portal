@@ -13,6 +13,18 @@ export class ValidateUserEducationalService {
     if(!userEducation.aggregatePercentage) {
       return "Aggregate Percentage is invalid";
     }
+    if(!userEducation.yearOfPassing) {
+      return "Please enter year of passing";
+    }
+    if(!userEducation.qualification) {
+      return "Qualification is required";
+    }
+    if(!userEducation.stream) {
+      return "Stream is required";
+    }
+    if(!userEducation.college) {
+      return "College is required";
+    }
     this.errorMessage = this.validateQualification(userEducation.qualification.id);
     if (this.errorMessage !== undefined) {
       return this.errorMessage;

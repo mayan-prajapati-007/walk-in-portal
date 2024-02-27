@@ -27,7 +27,6 @@ export class PersonalFormComponent {
   getJobRoles() {
     this.formDataService.getJobRoles().then((res) => {
       this.jobRoles = res;
-      console.log(res)
     });
   }
 
@@ -50,7 +49,6 @@ export class PersonalFormComponent {
     } else {
       this.selectedJobRoles.push(jobRole);
     }
-    console.log(this.selectedJobRoles);
     this.registrationDataService.userPersonal.jobRoles = this.selectedJobRoles;
   }
   

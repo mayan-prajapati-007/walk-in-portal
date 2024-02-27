@@ -37,11 +37,12 @@ public class QualificationService(MySqlDataSource database) : IQualificationServ
                 };
                 qualifications.Add(qualification);
             }
+            await reader.CloseAsync();
+            await connection.CloseAsync();
             return [.. qualifications];
         }
-        catch (Exception e)
+        catch
         {
-            Console.WriteLine(e.Message);
             return null;
         }
     }

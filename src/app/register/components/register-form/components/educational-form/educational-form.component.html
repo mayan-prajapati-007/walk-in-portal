@@ -10,6 +10,7 @@
         <div class="input-group-dropdown content-body-element">
             <label class="main-label" for="yearOfPassing">Year of Passing*</label>
             <select id="yearOfPassing" name="yearOfPassing" (change)="onChangesText($event.target)">
+                <option [value]="null">Select Year</option>
                 <option *ngFor="let year of yearsOfPassing" [value]="year">{{year}}</option>
             </select>
         </div>
@@ -37,7 +38,7 @@
             </div>
             <div class="input-group-text">
                 <label class="main-label" for="otherCollege">If others, please enter your college name</label>
-                <input id="otherCollege" type="text" [value]="selectedCollegeName" name="collegeName" (change)="onChangesText($event.target)" />
+                <input id="otherCollege" type="text" name="collegeName" (change)="onChangesText($event.target)" />
             </div>
         </div>
         <div class="input-group-text content-body-element">

@@ -102,25 +102,26 @@
                 </div>
                 <div class="professional-status">
                     <label class="main-label">Applicant type*</label>
-                    <p>Experienced</p>
+                    <p *ngIf="user.applicantType==1">FRESHER</p>
+                    <p *ngIf="user.applicantType==2">EXPERIENCED</p>
                 </div>
                 <div class="qualification-body professional-body">
-                    <div class="group-text experienced-field">
+                    <div *ngIf="user.applicantType==2" class="group-text experienced-field">
                         <label class="main-label">Years of Experience*</label>
                         <p>{{user.yearsOfExperience}}</p>
                     </div>
 
-                    <div class="group-text experienced-field">
+                    <div *ngIf="user.applicantType==2" class="group-text experienced-field">
                         <label class="main-label">Current CTC* (In Rupees)</label>
                         <p>{{user.currentCtc}}</p>
                     </div>
 
-                    <div class="group-text experienced-field">
+                    <div *ngIf="user.applicantType==2" class="group-text experienced-field">
                         <label class="main-label">Expected CTC* (In Rupees)</label>
                         <p>{{user.expectedCtc}}</p>
                     </div>
 
-                    <div class="technology-group experienced-field">
+                    <div *ngIf="user.applicantType==2" class="technology-group experienced-field">
                         <div class="group-checkbox">
                             <label class="main-label">Select All The Technologies You Expertise In*</label>
                             <p *ngFor="let item of user.expertTechnologies?.split(',')">{{item}}</p>
@@ -131,7 +132,7 @@
                         </div>
                     </div>
 
-                    <div class="technology-group">
+                    <div *ngIf="user.applicantType==1 || user.applicantType==2" class="technology-group">
                         <div class="group-checkbox">
                             <label class="main-label">Select All The Technologies You Are Familiar In</label>
                             <p *ngFor="let item of user.knownTechnologies?.split(',')">{{item}}</p>
@@ -142,7 +143,7 @@
                         </div>
                     </div>
 
-                    <div class="notice-container experienced-field">
+                    <div *ngIf="user.applicantType==2" class="notice-container experienced-field">
                         <div class="notice-radio-container">
                             <label class="main-label">Are you currently on notice period?*</label>
                             <p *ngIf="user.onNoticePeriod">Yes</p>
@@ -160,7 +161,7 @@
                         </div>
                     </div>
 
-                    <div class="applied-earlier-container">
+                    <div *ngIf="user.applicantType==1 || user.applicantType==2" class="applied-earlier-container">
                         <label class="main-label">Have You Appeared For Any Test By Zeus in the past 12 months?*</label>
                         <p *ngIf="user.appliedEarlier">Yes</p>
                         <p *ngIf="!user.appliedEarlier">No</p>

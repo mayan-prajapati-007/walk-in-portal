@@ -26,7 +26,8 @@ public class TimeSlotService(MySqlDataSource database) : ITimeSlotService
 
         command.Parameters.AddWithValue("@id", id);
 
-        try {
+        try
+        {
             var reader = await command.ExecuteReaderAsync();
             var timeSlots = new List<TimeSlot>();
             while (await reader.ReadAsync())
@@ -39,9 +40,12 @@ public class TimeSlotService(MySqlDataSource database) : ITimeSlotService
                 };
                 timeSlots.Add(timeSlot);
             }
+            await reader.CloseAsync();
+            await connection.CloseAsync();
             return [.. timeSlots];
-        } catch (Exception e) {
-            Console.WriteLine(e.Message);
+        }
+        catch
+        {
             return null;
         }
 
@@ -59,18 +63,19 @@ public class TimeSlotService(MySqlDataSource database) : ITimeSlotService
 
         var reader = await command.ExecuteReaderAsync();
 
+        TimeSlot timeSlot = new();
+
         if (await reader.ReadAsync())
         {
-            var timeSlot = new TimeSlot
-            {
-                Id = reader.GetInt32("id"),
-                StartTime = reader.GetTimeSpan("start_time").ToString(),
-                EndTime = reader.GetTimeSpan("end_time").ToString()
-            };
-            return timeSlot;
-        }
+            timeSlot.Id = reader.GetInt32("id");
+            timeSlot.StartTime = reader.GetTimeSpan("start_time").ToString();
+            timeSlot.EndTime = reader.GetTimeSpan("end_time").ToString();
+        };
 
-        return null;
+        await reader.CloseAsync();
+
+        await connection.CloseAsync();
+        return timeSlot == new TimeSlot() ? null : timeSlot;
     }
 
 }

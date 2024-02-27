@@ -1,6 +1,5 @@
 using Backend.Filters;
 using Backend.Models;
-using Backend.Services;
 using Backend.Services.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using MySqlConnector;

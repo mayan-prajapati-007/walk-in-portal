@@ -26,15 +26,21 @@ public class UserService(MySqlDataSource database) : IUserService
 
         var reader = await command.ExecuteReaderAsync();
 
+        int id = -1;
+
         if (await reader.ReadAsync())
         {
-            return reader.GetInt32("id");
+            id = reader.GetInt32("id");
         }
 
-        return -1;
+        await reader.CloseAsync();
+        await connection.CloseAsync();
+
+        return id;
     }
 
-    public async Task<User?> GetUserByEmailAsync(string email) {
+    public async Task<User?> GetUserByEmailAsync(string email)
+    {
         MySqlConnection connection = await _database.OpenConnectionAsync();
 
         var procedure = "get_user_by_email";
@@ -47,25 +53,27 @@ public class UserService(MySqlDataSource database) : IUserService
         command.Parameters.AddWithValue("@email", email);
 
         var reader = await command.ExecuteReaderAsync();
+
+        User user = new();
         if (await reader.ReadAsync())
         {
-            var user = new User
-            {
-                Id = reader.GetInt32("id"),
-                Email = reader.GetString("email"),
-                Password = reader.GetString("password"),
-                Salt = reader.GetString("salt"),
-                Role = reader.GetInt32("role")
-            };
-            return user;
-        }
+            user.Id = reader.GetInt32("id");
+            user.Email = reader.GetString("email");
+            user.Password = reader.GetString("password");
+            user.Salt = reader.GetString("salt");
+            user.Role = reader.GetInt32("role");
+        };
 
-        return null;
+        await reader.CloseAsync();
+
+        await connection.CloseAsync();
+        return user == new User() ? null : user;
     }
 
-    public async Task<UserInfo?> CreateUserAsync(UserInfo user) {
+    public async Task<UserInfo?> CreateUserAsync(UserInfo user)
+    {
 
-        if(user.Email != null && GetUserByEmailAsync(user.Email).Result != null)
+        if (user.Email != null && GetUserByEmailAsync(user.Email).Result != null)
         {
             return null;
         }
@@ -125,6 +133,9 @@ public class UserService(MySqlDataSource database) : IUserService
                 {
                     await transaction.RollbackAsync();
                     return null;
+                }
+                finally {
+                    await connection.CloseAsync();
                 }
             }
             user.Id = userId.Value;

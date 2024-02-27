@@ -49,7 +49,6 @@ export class ProfessionalFormComponent {
     if(this.selectedExpertTechnologies == '') {
       this.selectedExpertTechnologies = event.target.value;
     } else if (event.target.value === '0') {
-      console.log("first")
     } else {
       if(this.selectedExpertTechnologies.includes(","+event.target.value)) {
         this.selectedExpertTechnologies = this.selectedExpertTechnologies.replace(","+event.target.value, '');
@@ -66,7 +65,6 @@ export class ProfessionalFormComponent {
     if(this.selectedKnownTechnologies == '') {
       this.selectedKnownTechnologies = event.target.value;
     } else if (event.target.value === '0') {
-      console.log("first")
     } else {
       if(this.selectedKnownTechnologies.includes(","+event.target.value)) {
         this.selectedKnownTechnologies = this.selectedKnownTechnologies.replace(","+event.target.value, '');

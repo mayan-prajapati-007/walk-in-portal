@@ -22,5 +22,6 @@ export class ReviewFormComponent {
 
   ngOnInit() {
     this.user = this.registrationDataService.getUser();
+    this.registrationDataService.copyUserReviewData();
   }
 }

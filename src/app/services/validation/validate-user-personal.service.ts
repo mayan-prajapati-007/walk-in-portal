@@ -10,15 +10,15 @@ export class ValidateUserPersonalService {
   constructor() { }
 
   validateForm(userPersonal: UserPersonal) {
+    this.errorMessage = this.validateName(userPersonal.firstName, "First Name");
+    if (this.errorMessage !== undefined) {
+      return this.errorMessage;
+    }
+    this.errorMessage = this.validateName(userPersonal.lastName, "Last Name");
+    if (this.errorMessage !== undefined) {
+      return this.errorMessage;
+    }
     this.errorMessage = this.validateEmail(userPersonal.email);
-    if (this.errorMessage !== undefined) {
-      return this.errorMessage;
-    }
-    this.errorMessage = this.validateName(userPersonal.firstName);
-    if (this.errorMessage !== undefined) {
-      return this.errorMessage;
-    }
-    this.errorMessage = this.validateName(userPersonal.lastName);
     if (this.errorMessage !== undefined) {
       return this.errorMessage;
     }
@@ -26,6 +26,7 @@ export class ValidateUserPersonalService {
     if (this.errorMessage !== undefined) {
       return this.errorMessage;
     }
+    userPersonal.phone = userPersonal.phone ? userPersonal.phone.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3') : '123-456-7890';
     this.errorMessage = this.validateJobRoles(userPersonal.jobRoles);
     if (this.errorMessage !== undefined) {
       return this.errorMessage;
@@ -56,8 +57,8 @@ export class ValidateUserPersonalService {
     }
   }
 
-  validateName(name: string) {
-    if (name === undefined) return "Name is required";
+  validateName(name: string, fieldName: string) {
+    if (name === undefined) return `${fieldName} is required`;
     if (name.length === 0) {
       return "Name is required";
     } else {

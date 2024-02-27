@@ -35,9 +35,7 @@ export class UserApplicationService {
         jobRoleIds: userApplication.jobRoles
       })
     });
-    console.log("first: ", response);
     const data = await response.json();
-    console.log("second: ", data);
     return data;
   }
 

@@ -52,7 +52,6 @@ public class ApplicationsController : ControllerBase
         var userApplicationData = new ApplicationService(db).ApplyForApplicationAsync(application).Result;
         if(userApplicationData == null)
         {
-            System.Console.WriteLine("User application data is null");
             ModelState.AddModelError("Application", "Application not found.");
             var problemDetails = new ValidationProblemDetails(ModelState)
             {

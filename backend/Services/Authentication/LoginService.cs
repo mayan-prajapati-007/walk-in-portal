@@ -57,11 +57,14 @@ public class LoginService(MySqlDataSource database, IConfiguration configuration
         };
         command.Parameters.AddWithValue("@userId", userId);
         var reader = await command.ExecuteReaderAsync();
+        string? token = null;
         if (await reader.ReadAsync())
         {
-            return reader.GetString("token");
+            token = reader.GetString("token");
         }
-        return null;
+        await reader.CloseAsync();
+        await connection.CloseAsync();
+        return token;
     }
 
     public async Task InsertTokenAsync(string token, int userId)
@@ -75,5 +78,6 @@ public class LoginService(MySqlDataSource database, IConfiguration configuration
         command.Parameters.AddWithValue("@userToken", token);
         command.Parameters.AddWithValue("@userId", userId);
         await command.ExecuteNonQueryAsync();
+        await connection.CloseAsync();
     }
 }

@@ -38,11 +38,13 @@ public class CollegeService(MySqlDataSource database) : ICollegeService
                 };
                 colleges.Add(college);
             }
+            await reader.CloseAsync();
+
+            await connection.CloseAsync();
             return [.. colleges];
         }
-        catch (Exception e)
+        catch
         {
-            Console.WriteLine(e.Message);
             return null;
         }
     }

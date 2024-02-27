@@ -40,7 +40,6 @@ export class EducationalFormComponent {
   getStreams() {
     this.formDataService.getStreams().then((res) => {
       this.streams = res;
-      console.log(res);
     });
   }
 
@@ -57,7 +56,11 @@ export class EducationalFormComponent {
         id: 0,
         name: event.value
       };
-      this.selectedCollegeLocation = '';
+    } else if (event.name == 'collegeLocation') {
+      this.registrationDataService.userEducation.college = {
+        ...this.registrationDataService.userEducation.college,
+        location: event.value
+      };
     }
     this.registrationDataService.userEducation = {
       ...this.registrationDataService.userEducation,
@@ -89,6 +92,7 @@ export class EducationalFormComponent {
         name: selectedCollege.name,
         location: selectedCollege.location
       };
+      this.selectedCollegeLocation = selectedCollege.location;
     }
   }
 }

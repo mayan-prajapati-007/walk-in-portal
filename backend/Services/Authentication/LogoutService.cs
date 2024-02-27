@@ -23,12 +23,9 @@ public class LogoutService(MySqlDataSource database) : ILogoutService
         {
             CommandType = CommandType.StoredProcedure
         };
-
-        System.Console.WriteLine(token);
         command.Parameters.AddWithValue("@token", token);
 
         await command.ExecuteNonQueryAsync();
-        Console.WriteLine("Token deleted");
         await connection.CloseAsync();
     }
 }

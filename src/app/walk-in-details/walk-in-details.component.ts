@@ -102,7 +102,6 @@ export class WalkInDetailsComponent {
     this.userApplicationService.applyForApplication(this.userApplication).then((response) => {
       if (response.errors) {
         this.errorMessage = response.errors[0];
-        console.log(response.errors)
         this.clearErrorMessage();
       } else {
         this.successMessage = 'Application submitted successfully';
